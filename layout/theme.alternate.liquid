@@ -1,0 +1,21 @@
+<!doctype html>
+  <html>
+    <head>
+   
+    <script type="text/javascript" src="{{ 'accordion.js' | asset_url }}" defer></script>
+    <link rel="stylesheet" href= "{{ 'fonts.css' | asset_url }}">
+    <link rel="stylesheet" href= "{{ 'style.css' | asset_url }}">
+    <title></title>
+      {{ content_for_header }}
+    <body>
+     {% section 'altemate-header' %}
+     {% render 'alternate-breadcrumbs' %}
+        
+      <main id="main" class="main" >
+        {{ content_for_layout }}
+      </main>
+
+      {% section 'alternate-footer' %}
+   </body>
+  </html>
+  
