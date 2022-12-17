@@ -218,7 +218,7 @@
       "altemate-header": {
         "type": "altemate-header",
         "settings": {
-          "header_menu": ""
+          "header_menu": "site"
         }
       },
       "alternate-footer": {
