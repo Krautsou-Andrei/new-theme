@@ -1,16 +1,19 @@
 <section class="product product__container container">
   <div class="product__image image">
     <div class="image__container">
-      <img class="image__product" src="{{ 'item.jpg' | asset_url }}" alt="White unisex t-shirt">
+      <img class="image__product" src="{{- product.featured_image | image_url: width: 473 -}}" alt="{{- product.featured_image.alt | escape -}}">
     </div>
   </div>
 
   <div class="product__info product-info">
     <div class="product-info__container">
       <header class="product__header">
-        <h1 class="product__heading heading--xxl">White unisex t-shirt</h1>
-        <p class="product__price price"><span>CHF 40</span></p>
-        <p class="price__description price-description">Tax included</p>
+        <h1 class="product__heading heading--xxl">{{- product.title | escape -}}</h1>
+        <p class="product__price price"><span>{{- shop.currency }} {{ product.price | money_without_currency -}}</span></p>
+        {%- if shop.taxes_included -%}
+          <p class="price__description price-description">{{- 'products.product.include_taxes' | t -}}</p>  
+        {%- endif -%}
+        
       </header>
       <form id="product-form-1" class="product__form form" action="/cart" method="post" enctype="multipart/form-data">
         <h2 class="visually-hidden">выбор характеристик продукта</h2>
@@ -141,7 +144,9 @@
           </div>
         </fieldset>
         <div class="form__button">
-          <button class="button button--primary" type="submit" name="type" value="add"><span>Add to cart</span></button>
+          <button class="button button--primary" type="submit" name="type" value="add">
+            <span>{{- 'products.product.add_to_cart' | t -}}</span>
+          </button>
           <button class="button button--secondary" type="submit" name="type" value="buy">
             <span>Buy it now</span>
           </button>

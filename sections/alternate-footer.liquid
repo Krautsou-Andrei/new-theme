@@ -1,7 +1,7 @@
 <div class="footer__container container">
         {%- if section.blocks.size > 0 -%}
           <div class="footer-top">
-            {%for block in section.blocks%}
+            {%- for block in section.blocks -%}
               <section class="footer__section">
                 {%- if block.settings.title != blank -%}
                   <h2 class="footer__heading footer-heading heading--lg">{{- block.settings.title | escape -}}</h2>
@@ -32,18 +32,18 @@
                     <section class="footer__section">
                       {%- if block.settings.footer_menu != blank -%}
                         <ul class="footer-navigation" role="list">
-                          {% for link in block.settings.footer_menu.links %}
+                          {%- for link in block.settings.footer_menu.links -%}
                             <li class="footer-navigation__item">
-                              <a class="footer-navigation__link" href="{{link.url}}">{{link.title | escape}}</a>
+                              <a class="footer-navigation__link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
                             </li>
-                          {% endfor%}
+                          {%- endfor -%}
                         </ul>
-                      {%endif%}
+                      {%- endif -%}
                     </section>
               
                 {%-endcase-%}
               </section>
-            {%endfor%}
+            {%- endfor -%}
           </div>
         {%- endif -%}
 
@@ -52,7 +52,7 @@
         </div>
   </div>
 
-{% schema %}
+{%- schema -%}
   {
     "name": "Alternate-footer",
     "tag": "footer",
@@ -112,10 +112,10 @@
     ]
    
   }
-{% endschema %}
+{%- endschema -%}
 
-{% stylesheet %}
-{% endstylesheet %}
+{%- stylesheet -%}
+{%- endstylesheet -%}
 
-{% javascript %}
-{% endjavascript %}
+{%- javascript -%}
+{%- endjavascript -%}

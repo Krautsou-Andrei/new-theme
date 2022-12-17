@@ -31,13 +31,13 @@
           <nav class="header__menu menu">
             <ul class="menu__list" role="list">
               <li class="menu__item">
-                <a class="menu__link link" href="{{- routes.account_url -}}">Account</a>
+                <a class="menu__link link" href="{{- routes.account_url -}}">{{- 'customer.account.title' | t }}</a>
               </li>
               <li class="menu__item">
-                <a class="menu__link link" href="{{- routes.search_url -}}">Search</a>
+                <a class="menu__link link" href="{{- routes.search_url -}}">{{- 'general.search.search' | t -}}</a>
               </li>
               <li class="menu__item">
-                <a class="menu__link link cart-preview" href="{{- routes.cart_url -}}">Cart <span class="cart-preview__quantity">({{- cart.item_count -}})</span></a>
+                <a class="menu__link link cart-preview" href="{{- routes.cart_url -}}">{{- 'templates.cart.cart' | t }} <span class="cart-preview__quantity">({{- cart.item_count -}})</span></a>
               </li>
             </ul>
           </nav>
