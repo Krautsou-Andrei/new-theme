@@ -229,8 +229,8 @@
           "4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9": {
             "type": "about",
             "settings": {
-              "title": "Heading",
-              "about_paragraph": "",
+              "title": "About",
+              "about_paragraph": "<p>Suspara Store<\/p><p>Geneva, Switzerland<\/p>",
               "linkFB": "Link FB",
               "link_instagram": "Link instagram"
             }
