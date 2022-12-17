@@ -238,8 +238,8 @@
           "d7a6de9d-fc96-47f3-b8c3-f92e0122f872": {
             "type": "menu",
             "settings": {
-              "title": "Heading",
-              "footer_menu": ""
+              "title": "Company",
+              "footer_menu": "alternate-footer"
             }
           }
         },
