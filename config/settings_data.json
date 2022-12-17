@@ -218,6 +218,8 @@
       "altemate-header": {
         "type": "altemate-header",
         "settings": {
+          "logo": "shopify:\/\/shop_images\/logo.png",
+          "logo_width": 140,
           "header_menu": "site"
         }
       },
@@ -227,7 +229,7 @@
           "4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9": {
             "type": "about",
             "settings": {
-              "about_title": "Quick links",
+              "title": "Heading",
               "about_paragraph": "",
               "linkFB": "Link FB",
               "link_instagram": "Link instagram"
@@ -236,7 +238,7 @@
           "d7a6de9d-fc96-47f3-b8c3-f92e0122f872": {
             "type": "menu",
             "settings": {
-              "Menu_title": "Quick links",
+              "title": "Heading",
               "footer_menu": ""
             }
           }
