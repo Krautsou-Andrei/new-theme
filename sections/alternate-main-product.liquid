@@ -9,7 +9,7 @@
     <div class="product-info__container">
       <header class="product__header">
         <h1 class="product__heading heading--xxl">{{- product.title | escape -}}</h1>
-        <p class="product__price price"><abbr>{{- shop.currency }} </abbr><span>{{- product.price | money_without_currency -}}</span></p>
+        <span class="product__price price"><abbr>{{- shop.currency }} </abbr>{{- product.price | money_without_currency -}}</span>
         {%- if shop.taxes_included -%}
           <p class="price__description price-description">{{- 'products.product.include_taxes' | t -}}</p>  
         {%- endif -%}
