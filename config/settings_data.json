@@ -218,7 +218,9 @@
       "altemate-header": {
         "type": "altemate-header",
         "settings": {
-          "header_menu": ""
+          "logo": "shopify:\/\/shop_images\/logo.png",
+          "logo_width": 140,
+          "header_menu": "site"
         }
       },
       "alternate-footer": {
@@ -227,22 +229,30 @@
           "4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9": {
             "type": "about",
             "settings": {
-              "about_title": "Quick links",
-              "about_paragraph": "",
+              "title": "About",
+              "about_paragraph": "<p>Suspara Store<\/p><p>Geneva, Switzerland<\/p>",
               "linkFB": "Link FB",
               "link_instagram": "Link instagram"
+            }
+          },
+          "b34e930e-7b4f-4290-a638-7e4b2ab7b81b": {
+            "type": "menu",
+            "settings": {
+              "title": "Company",
+              "footer_menu": "alternate-footer"
             }
           },
           "d7a6de9d-fc96-47f3-b8c3-f92e0122f872": {
             "type": "menu",
             "settings": {
-              "Menu_title": "Quick links",
-              "footer_menu": ""
+              "title": "Useful Links",
+              "footer_menu": "footer-menu-useful-links"
             }
           }
         },
         "block_order": [
           "4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9",
+          "b34e930e-7b4f-4290-a638-7e4b2ab7b81b",
           "d7a6de9d-fc96-47f3-b8c3-f92e0122f872"
         ],
         "settings": {
