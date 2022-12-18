@@ -9,7 +9,7 @@
     <div class="product-info__container">
       <header class="product__header">
         <h1 class="product__heading heading--xxl">{{- product.title | escape -}}</h1>
-        <p class="product__price price"><span>{{- shop.currency }} {{ product.price | money_without_currency -}}</span></p>
+        <p class="product__price price"><abbr>{{- shop.currency }} </abbr><span>{{- product.price | money_without_currency -}}</span></p>
         {%- if shop.taxes_included -%}
           <p class="price__description price-description">{{- 'products.product.include_taxes' | t -}}</p>  
         {%- endif -%}
@@ -121,7 +121,7 @@
           </div>
         </fieldset>
         <fieldset class="form__fieldset">
-          <legend class="quantity__legend"><label for="quantity">Quantity</label></legend>
+          <legend class="quantity__legend"><label for="quantity">{{- 'products.product.quantity.label' |t -}}</label></legend>
           <div class="quantity">
             <div class="quantity__controls">
               <input
@@ -132,13 +132,13 @@
                 max="999"
                 value="1"
                 name="quantity"
-                aria-label="Quantity"
+                form="{{ product_form_id }}"
               >
               <button class="quantity__button quantity__button--decrease" type="button">
-                <span class="visually-hidden">Decrease quantity</span>
+                <span class="visually-hidden">{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}</span>
               </button>
               <button class="quantity__button quantity__button--increase" type="button">
-                <span class="visually-hidden">Increase quantity</span>
+                <span class="visually-hidden"> {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}</span>
               </button>
             </div>
           </div>
@@ -153,95 +153,47 @@
         </div>
       </form>
       <footer class="product__footer" tabindex="0">
-        <p>A unisex basic garment with a loose fit. Light and comfortable to your skin.</p>
-        <p>Certification of cotton - GOTS</p>
+        {%- if product.description != blank -%}
+          {{- product.description -}}
+        {%- endif -%}
       </footer>
     </div>
   </div>
 
   <div class="product__description description">
-    <h2 class="visually-hidden">описание продукта</h2>
-    <div id="accordionGroup" class="description__accordion accordion">
-      <div class="accordion__section accordion-section">
-        <h3 class="accordion-section__heading heading--xl">
-          <button
-            id="accordion1id"
-            class="accordion-section__trigger"
-            type="button"
-            aria-expanded="true"
-            aria-controls="sect1"
-            data-accordion-button
-          >
-            <span class="accordion-section__title">Sizing & Fit<span class="accordion-section__icon"></span></span>
-          </button>
-        </h3>
-        <div tabindex="-1" id="sect1" class="accordion-section__panel" role="region" aria-labelledby="accordion1id">
-          <fieldset>
-            <p class="accordion-section__text">Olga is 175cm, she is wearing a size S.</p>
-          </fieldset>
+    <h2 class="visually-hidden">{{- 'products.product.description' | t -}}</h2>
+    <div id="accordionGroup" class="description__accordion accordion" data-accordion>
+      {%- for block in section.blocks -%}
+       {%- if block != black -%}
+        
+        <div class="accordion__section accordion-section" data-accordion-section>
+          <h3 class="accordion-section__heading heading--xl">
+            <button
+              id="accordion{{- forloop.index -}}id"
+              class="accordion-section__button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="sect{{- forloop.index -}}"
+              data-accordion-button
+            >
+              <span class="accordion-section__title">{{- block.settings.title -}}<span class="accordion-section__icon"></span></span>
+            </button>
+          </h3>
+          <div tabindex="-1" id="sect{{- forloop.index -}}" class="accordion-section__content" role="region" aria-labelledby="accordion{{- forloop.index -}}id" data-accordion-content>
+            <fieldset class="accordion-content-wrap">
+              {{- block.settings.text -}}
+            </fieldset>
+          </div>
         </div>
-      </div>
-      <div class="accordion__section accordion-section">
-        <h3 class="accordion-section__heading heading--xl">
-          <button
-            id="accordion2id"
-            class="accordion-section__trigger"
-            type="button"
-            aria-expanded="false"
-            aria-controls="sect2"
-            data-accordion-button
-          >
-            <span class="accordion-section__title"
-              >Composition & Care<span class="accordion-section__icon"></span
-            ></span>
-          </button>
-        </h3>
-        <div
-          tabindex="-1"
-          id="sect2"
-          class="accordion-section__panel accordion-hidden"
-          role="region"
-          aria-labelledby="accordion2id"
-        >
-          <fieldset>
-            <p class="accordion-section__text">Olga is 175cm, she is wearing a size S.</p>
-            <p class="accordion-section__text">Olga is 175cm, she is wearing a size S.</p>
-            <p class="accordion-section__text">Olga is 175cm, she is wearing a size S.</p>
-          </fieldset>
-        </div>
-      </div>
-      <div class="accordion__section accordion-section">
-        <h3 class="accordion-section__heading heading--xl">
-          <button
-            id="accordion3id"
-            class="accordion-section__trigger"
-            type="button"
-            aria-expanded="false"
-            aria-controls="sect3"
-            data-accordion-button
-          >
-            <span class="accordion-section__title"
-              >Delivery & Returns<span class="accordion-section__icon"></span
-            ></span>
-          </button>
-        </h3>
-        <div
-          tabindex="-1"
-          id="sect3"
-          class="accordion-section__panel accordion-hidden"
-          role="region"
-          aria-labelledby="accordion3id"
-        >
-          <fieldset>
-            <p class="accordion-section__text">Olga is 175cm, she is wearing a size S.</p>
-          </fieldset>
-        </div>
-      </div>
+       {%- endif -%}
+        {%- endfor-%}
+      
+      
     </div>
   </div>
 </section>
 
-{% schema %}
+{%- schema -%}
 {
   "name": "Alternate main product",
   "tag": "section",
@@ -257,13 +209,13 @@
     "settings":[
       {
         "type": "text",
-        "id": "accordion_title",
+        "id": "title",
         "label": "Heading",
         "default": "Heading"
       },
       {
         "type": "richtext",
-        "id": "accorfion_text",
+        "id": "text",
         "label": "Paragraph"
       }
     ]
@@ -275,10 +227,6 @@
     }
   ]
 }
-{% endschema %}
+{%- endschema -%}
 
-{% stylesheet %}
-{% endstylesheet %}
 
-{% javascript %}
-{% endjavascript %}

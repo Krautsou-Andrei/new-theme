@@ -618,11 +618,11 @@ legend {
   font-size: var(--text-xl);
   line-height: 1.25;
 }
-.accordion-section__trigger {
+.accordion-section__button {
   font: inherit;
   color: inherit;
 }
-.accordion-section__trigger::after {
+.accordion-section__button::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -665,26 +665,29 @@ legend {
   height: 11px;
 }
 
-.accordion-section__trigger[aria-expanded="false"] .accordion-section__icon::before {
+.accordion-section__button[aria-expanded="false"] .accordion-section__icon::before {
   transform: translate(-50%, -50%) rotate(-90deg);
   opacity: 1;
 }
-.accordion-section__trigger[aria-expanded="true"] .accordion-section__icon::after {
+.accordion-section__button[aria-expanded="true"] .accordion-section__icon::after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
-.accordion-section__panel {
+.accordion-section__content {
+  overflow: hidden;
+  height: 0;
+}
+
+.accordion-content-wrap {
   padding-top: 0.5rem;
   padding-bottom: 2.5rem;
-  transition: all 0.4s ease-in-out;
 }
 
-.accordion-section__text + .accordion-section__text {
+.accordion-content-wrap p + p {
   padding-top: 0.5rem;
 }
 
-.accordion-hidden {
-  height: 0px;
-  padding: 0;
+.accordion-content-wrap li + li {
+  padding-top: 0.5rem;
 }
 
 /* =========================== carousel =============================== */
@@ -809,11 +812,7 @@ legend {
   line-height: 2;
   color: var(--color-text-secondary);
 }
-.address__location {
-  font-size: 1rem;
-  line-height: 2;
-  color: var(--color-text-secondary);
-}
+
 .address__social {
   margin-top: 1.1875rem;
 }

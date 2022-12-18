@@ -1,14 +1,21 @@
+
 <article class="section__carousel carousel container">
         <span id="ally_tags_label" class="visually-hidden" aria-hidden="true">Теги продукта</span>
         <div class="carousel__container">
-          <h2 class="carousel__heading heading--xxl title-heading--carousel">You may also like</h2>
+          <h2 class="carousel__heading heading--xxl title-heading--carousel">{{- section.settings.heading -}}</h2>
+          
           <ul class="carousel__list" role="list">
+          
+
+          {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
+            
+
             <li class="carousel__item">
               <article class="carousel__product carousel-product">
                 <div class="carousel-product__image image">
-                  <img class="image__carousel-product" src="{{ 'carousel-1.jpg' | asset_url }}" alt="">
+                  <img class="image__carousel-product" src="{{- block.featured_image | image_url: width: 248 -}}" alt="{{- block.featured_image.alt | escape -}}" >
                 </div>
-                <h3 class="carousel-product__heading heading--xl"><a href="#" class="carousel-product__link">Product name</a></h3>
+                <h3 class="carousel-product__heading heading--xl"><a href="{{- block.url -}}" class="carousel-product__link">{{- block.title -}}</a></h3>
                 <fieldset class="carousel-product__fieldset">
                   <legend class="visually-hidden">Color product</legend>
                   <div class="radio-group">
@@ -46,7 +53,14 @@
                 </p>
               </article>
             </li>
-            <li class="carousel__item">
+          {%- endfor -%}
+         
+          
+          
+          
+          
+            
+            {% comment %} <li class="carousel__item">
               <article class="carousel__product carousel-product">
                 <div class="carousel-product__image image">
                   <img class="image__carousel-product" src="{{ 'carousel-2.jpg' | asset_url }}" alt="" aria-hidden="true">
@@ -177,7 +191,7 @@
                   <span class="price price--carousel"> <abbr>CHF</abbr> 40</span>
                 </p>
               </article>
-            </li>
+            </li> {% endcomment %}
           </ul>
         </div>
       </article>
