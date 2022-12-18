@@ -13,20 +13,20 @@
                 alt: logo_alt
               -}}
             {%- else -%}
-              <span class="h2">{{- shop.name | escape-}}</span>
+              <span class="h2">{{- shop.name | escape -}}</span>
             {%- endif -%}
          </a>
-          <nav class="header__menu menu">
-            {%- if section.settings.header_menu != blank -%}
-            <ul class="menu__list" role="list">
-            {%- for link in section.settings.header_menu.links -%}
-              <li class="menu__item">
-                <a class="menu__link link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
-              </li>
-            {%- endfor -%}
-            </ul>
-            {%- endif -%}
-          </nav>
+          {%- if section.settings.header_menu != blank -%}
+            <nav class="header__menu menu">
+              <ul class="menu__list" role="list">
+                {%- for link in section.settings.header_menu.links -%}
+                  <li class="menu__item">
+                    <a class="menu__link link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- endif -%}
   
           <nav class="header__menu menu">
             <ul class="menu__list" role="list">
