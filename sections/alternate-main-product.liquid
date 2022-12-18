@@ -163,7 +163,7 @@
   <div class="product__description description">
     <h2 class="visually-hidden">{{- 'products.product.description' | t -}}</h2>
     <div id="accordionGroup" class="description__accordion accordion" data-accordion>
-      {%- if section.block > 0 -%}
+      {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
           <div class="accordion__section accordion-section" data-accordion-section>
             <h3 class="accordion-section__heading heading--xl">
@@ -178,15 +178,14 @@
                 <span class="accordion-section__title">{{- block.settings.title -}}<span class="accordion-section__icon"></span></span>
               </button>
             </h3>
-            <div tabindex="-1" id="sect{{- forloop.index -}}" class="accordion-section__content" role="region" aria-labelledby="accordion{{- forloop.index -}}id" data-accordion-content>
-              {%- if block.settings.text != blank -%}
+            {%- if block.settings.text != blank -%}
+              <div tabindex="-1" id="sect{{- forloop.index -}}" class="accordion-section__content" role="region" aria-labelledby="accordion{{- forloop.index -}}id" data-accordion-content>
                 <fieldset class="accordion-content-wrap">
                   {{- block.settings.text -}}
                 </fieldset>
-              {%- endif -%}
-            </div>
+              </div>
+            {%- endif -%}
           </div>
-       
         {%- endfor-%}
       {%- endif -%}
     </div>
