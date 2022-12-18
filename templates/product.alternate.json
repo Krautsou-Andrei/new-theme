@@ -24,20 +24,12 @@
             "accordion_title": "Delivery & Returns",
             "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
           }
-        },
-        "87e224e1-5954-4f86-9d2c-2f1191ebdfea": {
-          "type": "accordeon",
-          "settings": {
-            "accordion_title": "Heading",
-            "accorfion_text": ""
-          }
         }
       },
       "block_order": [
         "50025cce-0fb4-4db7-a14d-d616c814abfe",
         "561d4cda-1e05-4c5e-949a-4ca915a7e89c",
-        "41b2f393-f5a8-4cb6-b7f8-21427541bebe",
-        "87e224e1-5954-4f86-9d2c-2f1191ebdfea"
+        "41b2f393-f5a8-4cb6-b7f8-21427541bebe"
       ],
       "settings": {
       }
