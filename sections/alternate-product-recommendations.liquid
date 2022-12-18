@@ -3,22 +3,19 @@
         <span id="ally_tags_label" class="visually-hidden" aria-hidden="true">Теги продукта</span>
         <div class="carousel__container">
           <h2 class="carousel__heading heading--xxl title-heading--carousel">{{- section.settings.heading -}}</h2>
-          
           <ul class="carousel__list" role="list">
-          
-
           {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
-            {{- block.available -}}
-
             <li class="carousel__item">
               <article class="carousel__product carousel-product">
                 <div class="carousel-product__image image">
-                  <img class="image__carousel-product" src="{{- block.featured_image | image_url: width: 248 -}}" alt="{{- block.featured_image.alt | escape -}}" >
+                  <a href="{{- block.url -}}">
+                    <img class="image__carousel-product" src="{{- block.featured_image | image_url: width: 248 -}}" alt="{{- block.featured_image.alt | escape -}}" >
+                  </a>
                 </div>
                 {%- unless block.available -%}
-                <ul class="carousel-product__tags tags" role="list" aria-labelledby="ally_tags_label product-carousel_heading_3">
-                  <li class="tags__item tags__item--sold-out">Sold out</li>
-                </ul>
+                  <ul class="carousel-product__tags tags" role="list" aria-labelledby="ally_tags_label product-carousel_heading_{{- forloop.index -}}">
+                    <li class="tags__item tags__item--sold-out">Sold out</li>
+                  </ul>
                 {%- endunless -%}
                 <h3 class="carousel-product__heading heading--xl"><a href="{{- block.url -}}" class="carousel-product__link">{{- block.title -}}</a></h3>
                 <fieldset class="carousel-product__fieldset">
@@ -26,27 +23,27 @@
                   <div class="radio-group">
                     <div class="radio-group__container radio--small">
                       <div class="radio radio-color">
-                        <input id="carousel-product_color_brown_1" class="radio__input visually-hidden" type="radio" name="color_product-1" value="orange">
-                        <label class="radio__label" for="carousel-product_color_brown_1">
+                        <input id="carousel-product_color_brown_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
+                        <label class="radio__label" for="carousel-product_color_brown_{{- forloop.index -}}">
                           <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
                         </label>
                       </div>
 
                       <div class="radio radio-color">
-                        <input id="carousel-product_color_orange_1" class="radio__input visually-hidden" type="radio" name="color_product-1" value="orange">
-                        <label class="radio__label" for="carousel-product_color_orange_1">
+                        <input id="carousel-product_color_orange_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
+                        <label class="radio__label" for="carousel-product_color_orange_{{- forloop.index -}}">
                           <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
                         </label>
                       </div>
                       <div class="radio radio-color">
-                        <input id="carousel-product_color_pink_1" class="radio__input visually-hidden" type="radio" name="color_product-1" value="pink">
-                        <label class="radio__label" for="carousel-product_color_pink_1">
+                        <input id="carousel-product_color_pink_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="pink">
+                        <label class="radio__label" for="carousel-product_color_pink_{{- forloop.index -}}">
                           <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="pink">
                         </label>
                       </div>
                       <div class="radio radio-color">
-                        <input id="carousel-product_color_purpure-late_1" class="radio__input visually-hidden" type="radio" name="color_product-1" value="purpure-late">
-                        <label class="radio__label" for="carousel-product_color_purpure-late_1">
+                        <input id="carousel-product_color_purpure-late_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="purpure-late">
+                        <label class="radio__label" for="carousel-product_color_purpure-late_{{- forloop.index -}}">
                           <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
                         </label>
                       </div>
@@ -59,144 +56,6 @@
               </article>
             </li>
           {%- endfor -%}
-         
-          
-          
-          
-          
-            
-            {% comment %} <li class="carousel__item">
-              <article class="carousel__product carousel-product">
-                <div class="carousel-product__image image">
-                  <img class="image__carousel-product" src="{{ 'carousel-2.jpg' | asset_url }}" alt="" aria-hidden="true">
-                </div>
-                <h3 class="carousel-product__heading heading--xl"><a href="#" class="carousel-product__link">Product name</a></h3>
-                <fieldset class="carousel-product__fieldset">
-                  <legend class="visually-hidden">Color product</legend>
-                  <div class="radio-group">
-                    <div class="radio-group__container radio--small">
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_brown_2" class="radio__input visually-hidden" type="radio" name="color_product-2" value="orange">
-                        <label class="radio__label" for="carousel-product_color_brown_2">
-                          <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
-                        </label>
-                      </div>
-
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_orange_2" class="radio__input visually-hidden" type="radio" name="color_product-2" value="orange">
-                        <label class="radio__label" for="carousel-product_color_orange_2">
-                          <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_pink_2" class="radio__input visually-hidden" type="radio" name="color_product-2" value="pink">
-                        <label class="radio__label" for="carousel-product_color_pink_2">
-                          <img class="radio__image" src= "{{ 'color_pink.jpg' | asset_url }}" alt="pink">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_purpure-late_2" class="radio__input visually-hidden" type="radio" name="color_product-2" value="purpure-late">
-                        <label class="radio__label" for="carousel-product_color_purpure-late_2">
-                          <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <p class="carousel-product__price heading--xl">
-                  <span class="price price--carousel"> <abbr>CHF</abbr> 40</span>
-                </p>
-              </article>
-            </li>
-            <li class="carousel__item">
-              <article class="carousel__product carousel-product">
-                <div class="carousel-product__image image">
-                  <img class="image__carousel-product" src="{{ 'carousel-3.jpg' | asset_url }}" alt="" aria-hidden="true">
-                </div>
-                <ul class="carousel-product__tags tags" role="list" aria-labelledby="ally_tags_label product-carousel_heading_3">
-                  <li class="tags__item tags__item--sold-out">Sold out</li>
-                </ul>
-                <h3 id="product-carousel_heading_3" class="carousel-product__heading heading--xl"><a href="#" class="carousel-product__link">Product name</a></h3>
-                <fieldset class="carousel-product__fieldset">
-                  <legend class="visually-hidden">Color product</legend>
-                  <div class="radio-group">
-                    <div class="radio-group__container radio--small">
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_brown_3" class="radio__input visually-hidden" type="radio" name="color_product-3" value="orange">
-                        <label class="radio__label" for="carousel-product_color_brown_3">
-                          <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
-                        </label>
-                      </div>
-
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_orange_3" class="radio__input visually-hidden" type="radio" name="color_product-3" value="orange">
-                        <label class="radio__label" for="carousel-product_color_orange_3">
-                          <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_pink_3" class="radio__input visually-hidden" type="radio" name="color_product-3" value="pink">
-                        <label class="radio__label" for="carousel-product_color_pink_3">
-                          <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="pink">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_purpure-late_3" class="radio__input visually-hidden" type="radio" name="color_product-3" value="purpure-late">
-                        <label class="radio__label" for="carousel-product_color_purpure-late_3">
-                          <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <p class="carousel-product__price heading--xl">
-                  <span class="price price--carousel"> <abbr>CHF</abbr> 40</span>
-                </p>
-              </article>
-            </li>
-            <li class="carousel__item">
-              <article class="carousel__product carousel-product">
-                <div class="carousel-product__image image">
-                  <img class="image__carousel-product" src="{{ 'carousel-4.jpg' | asset_url }}" alt="" aria-hidden="true">
-                </div>
-                <h3 class="carousel-product__heading heading--xl"><a href="#" class="carousel-product__link">Product name</a></h3>
-                <fieldset class="carousel-product__fieldset">
-                  <legend class="visually-hidden">Color product</legend>
-                  <div class="radio-group">
-                    <div class="radio-group__container radio--small">
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_brown_4" class="radio__input visually-hidden" type="radio" name="color_product-4" value="orange">
-                        <label class="radio__label" for="carousel-product_color_brown_4">
-                          <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
-                        </label>
-                      </div>
-
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_orange_4" class="radio__input visually-hidden" type="radio" name="color_product-4" value="orange">
-                        <label class="radio__label" for="carousel-product_color_orange_4">
-                          <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_pink_4" class="radio__input visually-hidden" type="radio" name="color_product-4" value="pink">
-                        <label class="radio__label" for="carousel-product_color_pink_4">
-                          <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="pink">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_purpure-late_4" class="radio__input visually-hidden" type="radio" name="color_product-4" value="purpure-late">
-                        <label class="radio__label" for="carousel-product_color_purpure-late_4">
-                          <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <p class="carousel-product__price heading--xl">
-                  <span class="price price--carousel"> <abbr>CHF</abbr> 40</span>
-                </p>
-              </article>
-            </li> {% endcomment %}
           </ul>
         </div>
       </article>
