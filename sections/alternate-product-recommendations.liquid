@@ -6,61 +6,15 @@
           <ul class="carousel__list" role="list">
           {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
             <li class="carousel__item">
-              <article class="carousel__product carousel-product">
-                <div class="carousel-product__image image">
-                  <a href="{{- block.url -}}">
-                    <img class="image__carousel-product" src="{{- block.featured_image | image_url: width: 248 -}}" alt="{{- block.featured_image.alt | escape -}}" >
-                  </a>
-                </div>
-                {%- unless block.available -%}
-                  <ul class="carousel-product__tags tags" role="list" aria-labelledby="ally_tags_label product-carousel_heading_{{- forloop.index -}}">
-                    <li class="tags__item tags__item--sold-out">Sold out</li>
-                  </ul>
-                {%- endunless -%}
-                <h3 class="carousel-product__heading heading--xl"><a href="{{- block.url -}}" class="carousel-product__link">{{- block.title -}}</a></h3>
-                <fieldset class="carousel-product__fieldset">
-                  <legend class="visually-hidden">Color product</legend>
-                  <div class="radio-group">
-                    <div class="radio-group__container radio--small">
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_brown_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
-                        <label class="radio__label" for="carousel-product_color_brown_{{- forloop.index -}}">
-                          <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
-                        </label>
-                      </div>
-
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_orange_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
-                        <label class="radio__label" for="carousel-product_color_orange_{{- forloop.index -}}">
-                          <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_pink_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="pink">
-                        <label class="radio__label" for="carousel-product_color_pink_{{- forloop.index -}}">
-                          <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="pink">
-                        </label>
-                      </div>
-                      <div class="radio radio-color">
-                        <input id="carousel-product_color_purpure-late_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="purpure-late">
-                        <label class="radio__label" for="carousel-product_color_purpure-late_{{- forloop.index -}}">
-                          <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <p class="carousel-product__price heading--xl">
-                  <span class="price price--carousel"> <abbr>{{- shop.currency }} </abbr>{{- product.price | money_without_currency -}}</span>
-                </p>
-              </article>
+              {%- assign block = block -%}
+              {%- render 'alternate-product-card', product: block, forloop: forloop -%}
             </li>
           {%- endfor -%}
           </ul>
         </div>
       </article>
 
-{% schema %}
+{%- schema -%}
   {
     "name": "Alternate product recom",
     "tag": "section",
@@ -94,10 +48,5 @@
       }
     ]
   }
-{% endschema %}
+{%- endschema -%}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
