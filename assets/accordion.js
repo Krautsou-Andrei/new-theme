@@ -30,17 +30,11 @@ class Collapse {
     this.content = this.element.querySelector(SELECTORS.CONTENT);
     this.content.style.overflow = "hidden";
 
-    this.open = this.button.getAttribute("aria-expanded") === "true";
     this.state = STATES_SECTION.COLLAPSED;
 
     this.animation = null;
 
-    if (this.open) {
-      this.content.tabIndex = 0;
-    }
-
     this.button.addEventListener("click", this.toggle.bind(this));
-    this.startStates();
   }
 
   toggle() {
@@ -56,19 +50,10 @@ class Collapse {
     }
   }
 
-  startStates() {
-    if (!this.open) {
-      return;
-    } else {
-      this.toggle();
-    }
-  }
-
   collapse() {
     this.state = STATES_SECTION.ANIMATED;
     this._animateContent(false, STATES_SECTION.COLLAPSED);
     this.button.setAttribute("aria-expanded", false);
-    this.open = false;
     this.content.tabIndex = -1;
   }
 
@@ -76,7 +61,6 @@ class Collapse {
     this.state = STATES_SECTION.ANIMATED;
     this._animateContent(true, STATES_SECTION.EXPANDED);
     this.button.setAttribute("aria-expanded", true);
-    this.open = true;
     this.content.tabIndex = 0;
   }
 
@@ -121,12 +105,14 @@ class Accordion {
           this.closeSections(event.target.id);
         });
       }
+
+      this.sectionsInit[0].toggle();
     });
   }
 
   closeSections(id) {
     this.sectionsInit.forEach((section) => {
-      if (section.button.id !== id && section.open) {
+      if (section.button.id !== id && section.state === STATES_SECTION.EXPANDED) {
         section.toggle();
       }
     });
