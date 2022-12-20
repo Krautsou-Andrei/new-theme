@@ -15,6 +15,7 @@ const STATES_SECTION = {
 
 const ACCORDION_CONFIG = {
   alwaysOpenOne: true,
+  openSection: [1],
 };
 
 const ANIMATION_CONFIG = {
@@ -92,6 +93,7 @@ class Accordion {
     this.sections = node.querySelectorAll(SELECTORS.SECTION);
     this.sectionsInit = [];
     this.alwaysOpenOne = config.alwaysOpenOne;
+    this.openSection = config.openSection;
     this.init();
   }
 
@@ -105,9 +107,22 @@ class Accordion {
           this.closeSections(event.target.id);
         });
       }
-
-      this.sectionsInit[0].toggle();
     });
+
+    this.startOpenSection();
+  }
+
+  startOpenSection() {
+    this.openSection = this.openSection.splice(0, this.sectionsInit.length);
+    if (!this.alwaysOpenOne) {
+      this.openSection.forEach((index) => {
+        if (index > 0 && index <= this.sectionsInit.length) {
+          this.sectionsInit[index - 1].toggle();
+        }
+      });
+    } else if (this.openSection[0] > 0 && this.openSection[0] <= this.sectionsInit.length) {
+      this.sectionsInit[this.openSection[0] - 1].toggle();
+    }
   }
 
   closeSections(id) {
