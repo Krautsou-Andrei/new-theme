@@ -1,16 +1,18 @@
 
-<article class="section__carousel carousel container">
+<article class="section__recommendation recommendation container">
         <span id="ally_tags_label" class="visually-hidden" aria-hidden="true">Теги продукта</span>
-        <div class="carousel__container">
-          <h2 class="carousel__heading heading--xxl title-heading--carousel">{{- section.settings.heading -}}</h2>
-          <ul class="carousel__list" role="list">
-          {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
-            <li class="carousel__item">
-              {%- assign block = block -%}
-              {%- render 'alternate-product-card', product: block, forloop: forloop -%}
-            </li>
-          {%- endfor -%}
-          </ul>
+        <div class="recommendation__container">
+          <h2 class="recommendation__heading heading--xxl title-heading--recommendation">{{- section.settings.heading -}}</h2>
+          {%- if section.settings.collection.products.size > 0 -%}
+            <ul class="recommendation__list" role="list">
+              {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
+                <li class="recommendation__item">
+                  {%- assign block = block -%}
+                  {%- render 'alternate-product-card', product: block, forloop: forloop -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
         </div>
       </article>
 

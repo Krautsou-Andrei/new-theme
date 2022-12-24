@@ -6,27 +6,34 @@
                 {%- if block.settings.title != blank -%}
                   <h2 class="footer__heading footer-heading heading--lg">{{- block.settings.title | escape -}}</h2>
                 {%- endif -%}
-                {%-case block.type -%}
+                {%- case block.type -%}
                   {%- when 'about' -%}
                     <address class="address">
-                      {%- assign about_paragraph_text = block.settings.about_paragraph -%}
-                      <div class="address__title">
-                        {{- about_paragraph_text -}}
-                      </div>
-                      <ul class="address__social social social__list">
-                        <li class="social__item">
-                          <a class="cocial__link" href="{{- block.settings.linkFB -}}">
-                            <span class="visually-hidden">{{- block.settings.linkFB -}}</span>
-                            {%- render 'alternate-icon-facebook' -%}
-                          </a>
-                        </li>
-                        <li class="social__item">
-                          <a class="cocial__link" href="{{- block.settings.link_instagram -}}">
-                            <span class="visually-hidden">{{- block.settings.link_instagram -}}</span>
-                            {%-render 'alternate-icon-instagram'-%}
-                          </a>
-                        </li>  
-                      </ul>
+                      {%- if block.settings.about_paragraph != blank -%}
+                        <div class="address__title">
+                          {{- block.settings.about_paragraph -}}
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.linkFB != blank || block.settings.link_instagram != blank -%}
+                        <ul class="address__social social social__list">
+                          {%- if block.settings.linkFB != blank -%}
+                            <li class="social__item">
+                              <a class="cocial__link" href="{{- block.settings.linkFB -}}">
+                                <span class="visually-hidden">{{- 'general.social.links.facebook' | t -}}</span>
+                                {%- render 'alternate-icon-facebook' -%}
+                              </a>
+                            </li>
+                          {%- endif -%}
+                          {%- if block.settings.link_instagram != blank -%}
+                            <li class="social__item">
+                              <a class="cocial__link" href="{{- block.settings.link_instagram -}}">
+                                <span class="visually-hidden">{{- 'general.social.links.instagram' | t -}}</span>
+                                {%-render 'alternate-icon-instagram'-%}
+                              </a>
+                            </li>  
+                          {%- endif -%}
+                        </ul>
+                    {%- endif -%}
                     </address>
                   {%- when 'menu' -%}
                     <section class="footer__section">
@@ -41,7 +48,7 @@
                       {%- endif -%}
                     </section>
               
-                {%-endcase-%}
+                {%- endcase -%}
               </section>
             {%- endfor -%}
           </div>
