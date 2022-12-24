@@ -181,6 +181,7 @@ Shopify.theme.sections.register("alternate-main-product", {
 
   // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
   onBlockSelect: function (event) {
+    console.log(event);
     // Do something when a section block is selected
   },
 

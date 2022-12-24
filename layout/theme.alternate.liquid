@@ -3,11 +3,12 @@
     <head>
    
     <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
-    <script>
+    <script type="text/javascript" src="{{ 'load.js' | asset_url }}" defer></script>
+    {% comment %} <script>
       document.addEventListener('DOMContentLoaded', () =>{
         Shopify.theme.sections.load('*');
       })
-    </script>
+    </script> {% endcomment %}
     <link rel="stylesheet" href= "{{ 'fonts.css' | asset_url }}">
     <link rel="stylesheet" href= "{{ 'style.css' | asset_url }}">
     <title></title>
