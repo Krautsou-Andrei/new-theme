@@ -339,8 +339,6 @@ legend {
   transform: rotate(-45deg);
 }
 
-.header__menu {
-}
 .menu-burger-user {
   display: none;
 }
@@ -362,8 +360,7 @@ legend {
   width: 1rem;
   height: 1rem;
 }
-.cart-preview {
-}
+
 .menu-burger-user__link .cart-preview__quantity {
   position: absolute;
   top: 0;

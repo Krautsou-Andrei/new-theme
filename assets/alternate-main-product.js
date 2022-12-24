@@ -1,17 +1,4 @@
 "use strict";
-// window.customElements.define(
-//   "custom-element",
-//   class extends HTMLElement {
-//     constructor() {
-//       super();
-//       console.log("custom-element loaded");
-//     }
-
-//     select() {
-//       console.log(this);
-//     }
-//   }
-// );
 
 const SELECTORS = {
   ACCORDION: "[data-accordion]",
