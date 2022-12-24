@@ -7,22 +7,22 @@
         "50025cce-0fb4-4db7-a14d-d616c814abfe": {
           "type": "accordeon",
           "settings": {
-            "accordion_title": "Sizing & Fit",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "title": "Sizing & Fit",
+            "text": "<p>Olga is 175cm, she is wearing a size S<\/p>"
           }
         },
         "561d4cda-1e05-4c5e-949a-4ca915a7e89c": {
           "type": "accordeon",
           "settings": {
-            "accordion_title": "Composition & Care",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "title": "Composition & Care",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
           }
         },
         "41b2f393-f5a8-4cb6-b7f8-21427541bebe": {
           "type": "accordeon",
           "settings": {
-            "accordion_title": "Delivery & Returns",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "title": "Delivery & Returns",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
           }
         }
       },
