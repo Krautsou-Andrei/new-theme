@@ -1,3 +1,5 @@
+<script src="{{-'alternate-main-product.js' | asset_url -}}" type="module"></script>
+
 <div class="product product__container container">
   <div class="product__image image">
     <div class="image__container">
@@ -162,10 +164,16 @@
 
   <div class="product__description description">
     <h2 class="visually-hidden">{{- 'products.product.description' | t -}}</h2>
-    <div id="accordionGroup" class="description__accordion accordion" data-accordion>
+    <div class="description__accordion accordion" 
+         data-section-id="{{- section.id -}}"
+         data-section-type="alternate-main-product"
+         data-accordion>
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
-          <div class="accordion__section accordion-section" data-accordion-section>
+          <div class="accordion__section accordion-section"
+               id="{{-block.id-}}"
+               {{-block.shopify_attributes-}}
+               data-accordion-section>
             <h3 class="accordion-section__heading heading--xl">
               <button
                 id="accordion{{- forloop.index -}}id"
