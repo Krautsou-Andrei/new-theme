@@ -188,9 +188,9 @@
             </h3>
             {%- if block.settings.text != blank -%}
               <div tabindex="-1" id="sect{{- forloop.index -}}" class="accordion-section__content" role="region" aria-labelledby="accordion{{- forloop.index -}}id" data-accordion-content>
-                <fieldset class="accordion-content-wrap">
+                <div class="accordion-content-wrap">
                   {{- block.settings.text -}}
-                </fieldset>
+                </div>
               </div>
             {%- endif -%}
           </div>

@@ -8,31 +8,26 @@
           "type": "accordeon",
           "settings": {
             "accordion_title": "Sizing & Fit",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.</p>"
           }
         },
         "561d4cda-1e05-4c5e-949a-4ca915a7e89c": {
           "type": "accordeon",
           "settings": {
             "accordion_title": "Composition & Care",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.</p>"
           }
         },
         "41b2f393-f5a8-4cb6-b7f8-21427541bebe": {
           "type": "accordeon",
           "settings": {
             "accordion_title": "Delivery & Returns",
-            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "accorfion_text": "<p>Olga is 175cm, she is wearing a size S.</p>"
           }
         }
       },
-      "block_order": [
-        "50025cce-0fb4-4db7-a14d-d616c814abfe",
-        "561d4cda-1e05-4c5e-949a-4ca915a7e89c",
-        "41b2f393-f5a8-4cb6-b7f8-21427541bebe"
-      ],
-      "settings": {
-      }
+      "block_order": ["50025cce-0fb4-4db7-a14d-d616c814abfe", "561d4cda-1e05-4c5e-949a-4ca915a7e89c", "41b2f393-f5a8-4cb6-b7f8-21427541bebe"],
+      "settings": {}
     },
     "10901378-118d-4aba-b54c-3d85ebe6beda": {
       "type": "alternate-product-recommendations",
@@ -43,8 +38,5 @@
       }
     }
   },
-  "order": [
-    "alternate-main-product",
-    "10901378-118d-4aba-b54c-3d85ebe6beda"
-  ]
+  "order": ["alternate-main-product", "10901378-118d-4aba-b54c-3d85ebe6beda"]
 }
