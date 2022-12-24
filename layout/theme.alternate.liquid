@@ -3,23 +3,26 @@
     <head>
    
     <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
-    <script type="text/javascript" src="{{ 'load.js' | asset_url }}" defer></script>
-    {% comment %} <script>
-      document.addEventListener('DOMContentLoaded', () =>{
-        Shopify.theme.sections.load('*');
-      })
-    </script> {% endcomment %}
+   
+      <script>
+        document.addEventListener('DOMContentLoaded', () =>{
+          Shopify.theme.sections.load('*');
+        })
+      </script> 
+
     <link rel="stylesheet" href= "{{ 'fonts.css' | asset_url }}">
     <link rel="stylesheet" href= "{{ 'style.css' | asset_url }}">
-    <title></title>
-      {{- content_for_header -}}
+    <title>Susparsa</title>
+
+      {{ content_for_header }}
+
     </head>
     <body>
      {%- section 'altemate-header' -%}
      {%- render 'alternate-breadcrumbs' -%}
         
       <main id="main" class="main" >
-        {{- content_for_layout -}}
+        {{ content_for_layout }}
       </main>
 
       {%- section 'alternate-footer' -%}
