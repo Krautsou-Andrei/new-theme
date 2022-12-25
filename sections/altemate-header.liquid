@@ -1,6 +1,50 @@
 
         <div class="header__container">
           <a class="skip-to" href="#main">{{- "accessibility.skip_to_product_info" | t -}}  </a>
+          
+         {%- if section.settings.header_menu != blank -%}
+         <div class="menu-burger__wrap" data-menu-burger-wrap>
+          <button type="button" class="menu-burger__button menu-burger-button" data-menu-burger-button aria-expanded="false">
+            <span class="menu-burger-button__burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          
+          <nav class="header__menu menu-burger" inert data-menu-burger>
+            <ul class="menu-burger__list" role="list">
+              {%- for link in section.settings.header_menu.links -%}
+              <li class="menu-burger__item">
+                <a class="menu-burger__link link" 
+                   href="{{- link.url -}}"  
+                   data-menu-burger-link>
+                   {{- link.title | escape -}}
+                </a>
+              </li>
+              {%- endfor -%}
+              <li class="menu__item">
+                <a class="menu__link link" 
+                   href="{{- routes.account_url -}}"
+                   data-menu-burger-link>
+                   {{- 'customer.account.title' | t }}
+                </a>
+              </li>
+            </ul>
+          </nav>
+          </div>
+          {%- endif-%}
+          {%- if section.settings.header_menu != blank -%}
+            <nav class="header__menu menu menu--site">
+              <ul class="menu__list" role="list">
+                {%- for link in section.settings.header_menu.links -%}
+                  <li class="menu__item">
+                    <a class="menu__link link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- endif -%}
           <a class="header__logo logo" href="{{ routes.root_url }}">
             <span class="visually-hidden">Homepage</span>
             {%- if section.settings.logo != blank -%}
@@ -15,39 +59,7 @@
             {%- else -%}
               <span class="h2">{{- shop.name | escape -}}</span>
             {%- endif -%}
-         </a>
-
-         <div class="menu-burger__wrap" data-menu-burger-wrap>
-          <button type="button" class="menu-burger__button menu-burger-button" data-menu-burger-button aria-expanded="false">
-            <span class="menu-burger-button__burger">
-  
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
-          <nav class="header__menu menu-burger" inert data-menu-burger>
-            <ul class="menu-burger__list" role="list">
-              <li class="menu-burger__item"><a href="#" class="menu-burger__link link" data-menu-burger-link>Women</a></li>
-              <li class="menu-burger__item"><a href="#" class="menu-burger__link link" data-menu-burger-link>Men</a></li>
-              <li class="menu-burger__item"><a href="#" class="menu-burger__link link" data-menu-burger-link>Kids</a></li>
-              <li class="menu-burger__item"><a href="#" class="menu-burger__link link" data-menu-burger-link>Company</a></li>
-              <li class="menu-burger__item"><a href="#" class="menu-burger__link link" data-menu-burger-link>Account</a></li>
-            </ul>
-          </nav>
-          </div>
-          {%- if section.settings.header_menu != blank -%}
-            <nav class="header__menu menu menu--site">
-              <ul class="menu__list" role="list">
-                {%- for link in section.settings.header_menu.links -%}
-                  <li class="menu__item">
-                    <a class="menu__link link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
-                  </li>
-                {%- endfor -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-  
+          </a>
           <nav class="header__menu menu menu--user">
             <ul class="menu__list" role="list">
               <li class="menu__item">
