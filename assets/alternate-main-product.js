@@ -1,5 +1,5 @@
 "use strict";
-
+// -----------------------------------accordion------------------------------
 const SELECTORS = {
   ACCORDION: "[data-accordion]",
   SECTION: "[data-accordion-section]",
@@ -131,6 +131,60 @@ class Accordion {
     });
   }
 }
+
+// -------------------------------------------form-------------------------------
+
+class Form {
+  constructor(node) {
+    this.form = node;
+    this.form.addEventListener("submit", (event) => {
+      this.onSubmint(event);
+    });
+  }
+
+  onSubmint(event) {
+    console.log(event);
+    event.preventDefault();
+    fetch(event.target.action + ".js", {
+      method: event.target.method,
+      body: new FormData(event.target),
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          this.handleErrorMessage(response.description);
+        } else {
+          const event = new CustomEvent("card:added", {
+            detail: {
+              header: response.sections["alternate-header"],
+            },
+            bubbles: true,
+          });
+          this.form.dispatchEvent(event);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  handleErrorMessage(errorMessage = false) {
+    this.errorMessage = this.form.querySelector(".form-out-stock");
+    this.errorMessage.toggleAttribute("hidden", !errorMessage);
+
+    if (errorMessage) {
+      this.errorMessage.textContent = errorMessage;
+    }
+  }
+}
+const form = document.getElementById("product-form-1");
+
+new Form(form);
+
+// -------------------------------------------register---------------------------
 
 Shopify.theme.sections.register("alternate-main-product", {
   customElement: null,
