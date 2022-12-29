@@ -143,7 +143,6 @@ class Form {
   }
 
   onSubmint(event) {
-    console.log(event);
     event.preventDefault();
     fetch(event.target.action + ".js", {
       method: event.target.method,

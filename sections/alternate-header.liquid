@@ -1,4 +1,6 @@
 
+        <script src="{{-'alternate-header.js' | asset_url -}}" type="module"></script>
+        
         <div class="header__container">
           <a class="skip-to" href="#main">{{- "accessibility.skip_to_product_info" | t -}}  </a>
           
@@ -60,7 +62,10 @@
               <span class="h2">{{- shop.name | escape -}}</span>
             {%- endif -%}
           </a>
-          <nav class="header__menu menu menu--user">
+          <nav class="header__menu menu menu--user"
+                data-section-id="{{- section.id -}}"
+                data-section-type="alternate-header"
+              >
             <ul class="menu__list" role="list">
               <li class="menu__item">
                 <a class="menu__link link" href="{{- routes.account_url -}}">{{- 'customer.account.title' | t }}</a>
@@ -99,8 +104,9 @@
                     <circle cx="7" cy="22" r="2" />
                     <circle cx="17" cy="22" r="2" />
                   </svg>
-                  <span class="cart-preview__quantity">(0)</span>
+                  
                 </a>
+                <span class="cart-preview__quantity">({{- cart.item_count -}})</span>
               </li>
             </ul>
           </nav>

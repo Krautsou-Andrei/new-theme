@@ -3,16 +3,10 @@
     <head>
    
     <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
-   
-      <script>
-        document.addEventListener('DOMContentLoaded', () =>{
-          Shopify.theme.sections.load('*');
-        })
-      </script> 
- 
+         
+    <script type="text/javascript" src="{{ 'load.js' | asset_url }}" defer></script>
     <script type="text/javascript" src="{{ 'menu-burger.js' | asset_url }}" defer></script>
-    <script type="text/javascript" src="{{ 'alternate-header.js' | asset_url }}" defer></script>
-    
+       
     <link rel="stylesheet" href= "{{ 'fonts.css' | asset_url }}">
     <link rel="stylesheet" href= "{{ 'style.css' | asset_url }}">
     <title>Susparsa</title>
