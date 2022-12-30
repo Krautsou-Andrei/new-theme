@@ -7,7 +7,6 @@
             <ul class="recommendation__list" role="list">
               {%- for block in section.settings.collection.products limit:section.settings.products_to_show -%}
                 <li class="recommendation__item">
-                  {%- assign block = block -%}
                   {%- render 'alternate-product-card', product: block, forloop: forloop -%}
                 </li>
               {%- endfor -%}
@@ -36,11 +35,11 @@
       {
         "type": "range",
         "id": "products_to_show",
-        "min": 3,
+        "min": 4,
         "max": 6,
         "step": 1,
         "label": "Products to show",
-        "default": 3
+        "default": 4
       }
     ],
     

@@ -1,18 +1,5 @@
 "use strict";
-// window.customElements.define(
-//   "custom-element",
-//   class extends HTMLElement {
-//     constructor() {
-//       super();
-//       console.log("custom-element loaded");
-//     }
-
-//     select() {
-//       console.log(this);
-//     }
-//   }
-// );
-
+// -----------------------------------accordion------------------------------
 const SELECTORS = {
   ACCORDION: "[data-accordion]",
   SECTION: "[data-accordion-section]",
@@ -21,9 +8,9 @@ const SELECTORS = {
 };
 
 const STATES_SECTION = {
-  EXPANDED: "expanded",
+  OPENED: "opened",
   ANIMATED: "animated",
-  COLLAPSED: "collapsed",
+  CLOSED: "closed",
 };
 
 const ACCORDION_CONFIG = {
@@ -33,7 +20,7 @@ const ACCORDION_CONFIG = {
 
 const ANIMATION_CONFIG = {
   duration: 500,
-  easing: "ease-out",
+  easing: "ease-in-out",
   fill: "forwards",
 };
 
@@ -42,9 +29,8 @@ class Collapse {
     this.element = node;
     this.button = this.element.querySelector(SELECTORS.BUTTON);
     this.content = this.element.querySelector(SELECTORS.CONTENT);
-    this.content.style.overflow = "hidden";
 
-    this.state = STATES_SECTION.COLLAPSED;
+    this.state = STATES_SECTION.CLOSED;
 
     this.animation = null;
 
@@ -53,27 +39,26 @@ class Collapse {
 
   toggle() {
     switch (this.state) {
-      case STATES_SECTION.COLLAPSED:
-        this.expand();
+      case STATES_SECTION.CLOSED:
+        this.opened();
         break;
-      case STATES_SECTION.EXPANDED:
-        this.collapse();
+      case STATES_SECTION.OPENED:
+        this.closed();
         break;
       default:
         return;
     }
   }
-
-  collapse() {
+  closed() {
     this.state = STATES_SECTION.ANIMATED;
-    this._animateContent(false, STATES_SECTION.COLLAPSED);
+    this._animateContent(false, STATES_SECTION.CLOSED);
     this.button.setAttribute("aria-expanded", false);
     this.content.tabIndex = -1;
   }
 
-  expand() {
+  opened() {
     this.state = STATES_SECTION.ANIMATED;
-    this._animateContent(true, STATES_SECTION.EXPANDED);
+    this._animateContent(true, STATES_SECTION.OPENED);
     this.button.setAttribute("aria-expanded", true);
     this.content.tabIndex = 0;
   }
@@ -117,12 +102,12 @@ class Accordion {
 
       if (this.alwaysOpenOne) {
         section.button.addEventListener("click", (event) => {
-          this.closeSections(event.target.id);
+          this.closedSections(event.target.id);
         });
       }
     });
 
-    this.startOpenSection();
+    // this.startOpenSection();
   }
 
   startOpenSection() {
@@ -138,55 +123,94 @@ class Accordion {
     }
   }
 
-  closeSections(id) {
+  closedSections(id) {
     this.sectionsInit.forEach((section) => {
-      if (section.button.id !== id && section.state === STATES_SECTION.EXPANDED) {
+      if (section.button.id !== id && section.state === STATES_SECTION.OPENED) {
         section.toggle();
       }
     });
   }
 }
 
-const accordion = document.querySelector(SELECTORS.ACCORDION);
+// -------------------------------------------form-------------------------------
 
-new Accordion(accordion, ACCORDION_CONFIG);
+class Form {
+  constructor(node) {
+    this.form = node;
+    this.form.addEventListener("submit", (event) => {
+      this.onSubmint(event);
+    });
+  }
+
+  onSubmint(event) {
+    event.preventDefault();
+    fetch(event.target.action + ".js", {
+      method: event.target.method,
+      body: new FormData(event.target),
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          this.handleErrorMessage(response.description);
+        } else {
+          const event = new CustomEvent("card:added", {
+            detail: {
+              header: response.sections["alternate-header"],
+            },
+            bubbles: true,
+          });
+          this.form.dispatchEvent(event);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  handleErrorMessage(errorMessage = false) {
+    this.errorMessage = this.form.querySelector(".form-out-stock");
+    this.errorMessage.toggleAttribute("hidden", !errorMessage);
+
+    if (errorMessage) {
+      this.errorMessage.textContent = errorMessage;
+    }
+  }
+}
+const form = document.getElementById("product-form-1");
+
+new Form(form);
+
+// -------------------------------------------register---------------------------
 
 Shopify.theme.sections.register("alternate-main-product", {
   customElement: null,
 
-  // Shortcut function called when a section is loaded via 'sections.load()' or by the Theme Editor 'shopify:section:load' event.
   onLoad: function () {
-    // Do something when a section instance is loaded
-    console.log("Section loaded:", this);
-    this.customElement = this.container.getElementsByTagName("custom-element")[0] || null;
+    this.accordeon = new Accordion(this.container, ACCORDION_CONFIG);
   },
 
-  // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
-  onUnload: function () {
-    // Do something when a section instance is unloaded
-    console.log("Section unloaded:", this);
-  },
+  onUnload: function () {},
 
-  // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.
-  onSelect: function () {
-    // Do something when a section instance is selected
-    if (!this.customElement) return;
-    this.customElement.select();
-  },
+  onSelect: function () {},
 
-  // Shortcut function called when a section is deselected by the Theme Editor 'shopify:section:deselect' event.
-  onDeselect: function () {
-    // Do something when a section instance is deselected
-  },
+  onDeselect: function () {},
 
-  // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
   onBlockSelect: function (event) {
-    console.log(event);
-    // Do something when a section block is selected
+    this.accordeon.sectionsInit.forEach((section) => {
+      if (section.element.id === event.target.id) {
+        section.opened();
+      }
+    });
   },
 
-  // Shortcut function called when a section block is deselected by the Theme Editor 'shopify:block:deselect' event.
   onBlockDeselect: function (event) {
-    // Do something when a section block is deselected
+    this.accordeon.sectionsInit.forEach((section) => {
+      if (section.element.id === event.target.id) {
+        section.closed();
+      }
+    });
   },
 });

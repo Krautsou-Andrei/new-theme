@@ -17,143 +17,147 @@
         {%- endif -%}
         
       </header>
-      <form id="product-form-1" class="product__form form" action="/cart" method="post" enctype="multipart/form-data">
-        <h2 class="visually-hidden">выбор характеристик продукта</h2>
-        <fieldset aria-labelledby="radio-group-legend-text" class="form__fieldset">
-          <legend id="radio-group-legend-text" class="radio-group__legend">Size</legend>
-          <div class="radio-group">
-            <div class="radio-group__container">
-              <div class="radio radio-text">
-                <input id="size_xs" class="radio__input visually-hidden" type="radio" name="size" value="xs" checked>
-                <label class="radio__label" for="size_xs">XS</label>
-              </div>
-              <div class="radio radio-text">
-                <input id="size_s" class="radio__input visually-hidden" type="radio" name="size" value="s">
-                <label class="radio__label" for="size_s">S</label>
-              </div>
-              <div class="radio radio-text">
-                <input id="size_m" class="radio__input visually-hidden" type="radio" name="size" value="m">
-                <label class="radio__label" for="size_m">M</label>
-              </div>
-              <div class="radio radio-text">
-                <input id="size_l" class="radio__input visually-hidden" type="radio" name="size" value="l">
-                <label class="radio__label" for="size_l">L</label>
-              </div>
-              <div class="radio radio-text">
-                <input id="size_xl" class="radio__input visually-hidden" type="radio" name="size" value="xl">
-                <label class="radio__label" for="size_xl">XL</label>
-              </div>
-              <div class="radio radio-text">
-                <input id="size_2xl" class="radio__input visually-hidden" type="radio" name="size" value="2xl" disabled>
-                <label class="radio__label" for="size_2xl">2XL</label>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset aria-labelledby="radio-group-legend-color" class="form__fieldset">
-          <legend id="radio-group-legend-color" class="radio-group__legend">
-            Color<span aria-hidden="true"> - White</span>
-          </legend>
-          <div class="radio-group">
-            <div class="radio-group__container">
-              <div class="radio radio-color">
-                <input
-                  id="color_white"
-                  class="radio__input visually-hidden"
-                  type="radio"
-                  name="color"
-                  value="white"
-                  checked
-                >
-                <label class="radio__label" for="color_white" title="White">
-                  <img class="radio__image" src="{{ 'color_white.jpg' | asset_url }}" alt="White">
-                </label>
-              </div>
-              <div class="radio radio-color">
-                <input id="color_black" class="radio__input visually-hidden" type="radio" name="color" value="black">
-                <label class="radio__label" for="color_black" title="Black">
-                  <img class="radio__image" src="{{ 'color_black.jpg' | asset_url }}" alt="Black">
-                </label>
-              </div>
-              <div class="radio radio-color">
-                <input id="color_gray" class="radio__input visually-hidden" type="radio" name="color" value="gray">
-                <label class="radio__label" for="color_gray" title="Gary">
-                  <img class="radio__image" src="{{ 'color_gray.jpg' | asset_url }}" alt="Gray">
-                </label>
-              </div>
-              <div class="radio radio-color">
-                <input
-                  id="color_purpure-late"
-                  class="radio__input visually-hidden"
-                  type="radio"
-                  name="color"
-                  value="purpure_late"
-                >
-                <label class="radio__label" for="color_purpure-late" title="Purpure late">
-                  <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="Purpure late">
-                </label>
-              </div>
-              <div class="radio radio-color">
-                <input
-                  id="color_pink"
-                  class="radio__input visually-hidden"
-                  type="radio"
-                  name="color"
-                  value="pink"
-                  disabled
-                >
-                <label class="radio__label" for="color_pink" title="Pink">
-                  <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="Pink">
-                </label>
-              </div>
-              <div class="radio radio-color">
-                <input
-                  id="color_orange"
-                  class="radio__input visually-hidden"
-                  type="radio"
-                  name="color"
-                  value="orange"
-                  disabled
-                >
-                <label class="radio__label" for="color_orange" title="Orange">
-                  <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="Orange">
-                </label>
+      <h2 class="visually-hidden">выбор характеристик продукта</h2>
+        {% form 'product', product, id:'product-form-1', class:'product__form form' %}
+          <input type="hidden" name="id" value="{{- product.selected_or_first_available_variant.id -}}">
+          <input type="hidden" name="sections" value="alternate-header">
+          <fieldset aria-labelledby="radio-group-legend-text" class="form__fieldset">
+            <legend id="radio-group-legend-text" class="radio-group__legend">Size</legend>
+            <div class="radio-group">
+              <div class="radio-group__container">
+                <div class="radio radio-text">
+                  <input id="size_xs" class="radio__input visually-hidden" type="radio" name="size" value="xs" checked>
+                  <label class="radio__label" for="size_xs">XS</label>
+                </div>
+                <div class="radio radio-text">
+                  <input id="size_s" class="radio__input visually-hidden" type="radio" name="size" value="s">
+                  <label class="radio__label" for="size_s">S</label>
+                </div>
+                <div class="radio radio-text">
+                  <input id="size_m" class="radio__input visually-hidden" type="radio" name="size" value="m">
+                  <label class="radio__label" for="size_m">M</label>
+                </div>
+                <div class="radio radio-text">
+                  <input id="size_l" class="radio__input visually-hidden" type="radio" name="size" value="l">
+                  <label class="radio__label" for="size_l">L</label>
+                </div>
+                <div class="radio radio-text">
+                  <input id="size_xl" class="radio__input visually-hidden" type="radio" name="size" value="xl">
+                  <label class="radio__label" for="size_xl">XL</label>
+                </div>
+                <div class="radio radio-text">
+                  <input id="size_2xl" class="radio__input visually-hidden" type="radio" name="size" value="2xl" disabled>
+                  <label class="radio__label" for="size_2xl">2XL</label>
+                </div>
               </div>
             </div>
-          </div>
-        </fieldset>
-        <fieldset class="form__fieldset">
-          <legend class="quantity__legend"><label for="quantity">{{- 'products.product.quantity.label' |t -}}</label></legend>
-          <div class="quantity">
-            <div class="quantity__controls">
-              <input
-                id="quantity"
-                class="quantity__input"
-                type="number"
-                min="1"
-                max="999"
-                value="1"
-                name="quantity"
-                form="{{ product_form_id }}"
-              >
-              <button class="quantity__button quantity__button--decrease" type="button">
-                <span class="visually-hidden">{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}</span>
-              </button>
-              <button class="quantity__button quantity__button--increase" type="button">
-                <span class="visually-hidden"> {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}</span>
-              </button>
+          </fieldset>
+          <fieldset aria-labelledby="radio-group-legend-color" class="form__fieldset">
+            <legend id="radio-group-legend-color" class="radio-group__legend">
+              Color<span aria-hidden="true"> - White</span>
+            </legend>
+            <div class="radio-group">
+              <div class="radio-group__container">
+                <div class="radio radio-color">
+                  <input
+                    id="color_white"
+                    class="radio__input visually-hidden"
+                    type="radio"
+                    name="color"
+                    value="white"
+                    checked
+                  >
+                  <label class="radio__label" for="color_white" title="White">
+                    <img class="radio__image" src="{{ 'color_white.jpg' | asset_url }}" alt="White">
+                  </label>
+                </div>
+                <div class="radio radio-color">
+                  <input id="color_black" class="radio__input visually-hidden" type="radio" name="color" value="black">
+                  <label class="radio__label" for="color_black" title="Black">
+                    <img class="radio__image" src="{{ 'color_black.jpg' | asset_url }}" alt="Black">
+                  </label>
+                </div>
+                <div class="radio radio-color">
+                  <input id="color_gray" class="radio__input visually-hidden" type="radio" name="color" value="gray">
+                  <label class="radio__label" for="color_gray" title="Gary">
+                    <img class="radio__image" src="{{ 'color_gray.jpg' | asset_url }}" alt="Gray">
+                  </label>
+                </div>
+                <div class="radio radio-color">
+                  <input
+                    id="color_purpure-late"
+                    class="radio__input visually-hidden"
+                    type="radio"
+                    name="color"
+                    value="purpure_late"
+                  >
+                  <label class="radio__label" for="color_purpure-late" title="Purpure late">
+                    <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="Purpure late">
+                  </label>
+                </div>
+                <div class="radio radio-color">
+                  <input
+                    id="color_pink"
+                    class="radio__input visually-hidden"
+                    type="radio"
+                    name="color"
+                    value="pink"
+                    disabled
+                  >
+                  <label class="radio__label" for="color_pink" title="Pink">
+                    <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="Pink">
+                  </label>
+                </div>
+                <div class="radio radio-color">
+                  <input
+                    id="color_orange"
+                    class="radio__input visually-hidden"
+                    type="radio"
+                    name="color"
+                    value="orange"
+                    disabled
+                  >
+                  <label class="radio__label" for="color_orange" title="Orange">
+                    <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="Orange">
+                  </label>
+                </div>
+              </div>
             </div>
+          </fieldset>
+          <fieldset class="form__fieldset">
+            <legend class="quantity__legend"><label for="quantity">{{- 'products.product.quantity.label' |t -}}</label></legend>
+            <div class="quantity">
+              <div class="quantity__controls">
+                <input
+                  id="quantity"
+                  class="quantity__input"
+                  type="number"
+                  min="1"
+                  max="999"
+                  value="1"
+                  name="quantity"
+                  
+                >
+                <button class="quantity__button quantity__button--decrease" type="button">
+                  <span class="visually-hidden">{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}</span>
+                </button>
+                <button class="quantity__button quantity__button--increase" type="button">
+                  <span class="visually-hidden"> {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}</span>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form__button">
+            <button class="button button--primary" type="submit" name="type" value="add">
+              <span>{{- 'products.product.add_to_cart' | t -}}</span>
+            </button>
+            <button class="button button--secondary" type="submit" name="type" value="buy">
+              <span>Buy it now</span>
+            </button>
+            <div class="form-out-stock" hidden></div>
+            {% comment %} {{ form | payment_button }} {% endcomment %}
           </div>
-        </fieldset>
-        <div class="form__button">
-          <button class="button button--primary" type="submit" name="type" value="add">
-            <span>{{- 'products.product.add_to_cart' | t -}}</span>
-          </button>
-          <button class="button button--secondary" type="submit" name="type" value="buy">
-            <span>Buy it now</span>
-          </button>
-        </div>
-      </form>
+        {% endform%}
       <footer class="product__footer" tabindex="0">
         {%- if product.description != blank -%}
           {{- product.description -}}
@@ -188,9 +192,9 @@
             </h3>
             {%- if block.settings.text != blank -%}
               <div tabindex="-1" id="sect{{- forloop.index -}}" class="accordion-section__content" role="region" aria-labelledby="accordion{{- forloop.index -}}id" data-accordion-content>
-                <fieldset class="accordion-content-wrap">
+                <div class="accordion-content-wrap">
                   {{- block.settings.text -}}
-                </fieldset>
+                </div>
               </div>
             {%- endif -%}
           </div>
