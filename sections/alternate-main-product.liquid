@@ -129,14 +129,14 @@
             <div class="quantity">
               <div class="quantity__controls">
                 <input
-                  id="quantity-{{- section.id -}}"
+                  id="quantity"
                   class="quantity__input"
                   type="number"
                   min="1"
                   max="999"
                   value="1"
                   name="quantity"
-                  form="{{ product_form_id }}"
+                  
                 >
                 <button class="quantity__button quantity__button--decrease" type="button">
                   <span class="visually-hidden">{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}</span>

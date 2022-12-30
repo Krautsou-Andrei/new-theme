@@ -20,7 +20,7 @@ const ACCORDION_CONFIG = {
 
 const ANIMATION_CONFIG = {
   duration: 500,
-  easing: "ease-out",
+  easing: "ease-in-out",
   fill: "forwards",
 };
 

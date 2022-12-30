@@ -3,7 +3,7 @@
 class Quantity {
   constructor(node, event) {
     this.element = node;
-    this.quantity = this.element.querySelector("#cart-quantity");
+    this.quantity = this.element.querySelectorAll(".cart-preview__quantity");
 
     this.change(event);
   }
@@ -12,7 +12,9 @@ class Quantity {
     const parser = new DOMParser();
     const newQuantity = parser.parseFromString(event.detail.header, "text/html");
 
-    this.quantity.innerHTML = newQuantity.getElementById("cart-quantity").innerHTML;
+    this.quantity.forEach((element) => {
+      element.innerHTML = newQuantity.getElementById("cart-quantity").innerHTML;
+    });
   }
 }
 
@@ -25,11 +27,7 @@ Shopify.theme.sections.register("alternate-header", {
     });
   },
 
-  onUnload: function () {
-    document.removeEventListener("card:added", (event) => {
-      new Quantity(this.container, event);
-    });
-  },
+  onUnload: function () {},
 
   onSelect: function () {},
 
