@@ -1,123 +1,117 @@
-<div class="footer__container container">
-        {%- if section.blocks.size > 0 -%}
-          <div class="footer-top">
-            {%- for block in section.blocks -%}
-              <section class="footer__section">
-                {%- if block.settings.title != blank -%}
-                  <h2 class="footer__heading footer-heading heading--lg">{{- block.settings.title | escape -}}</h2>
+<div class='footer__container container'>
+  {%- if section.blocks.size > 0 -%}
+    <div class='footer-top'>
+      {%- for block in section.blocks -%}
+        <section class='footer__section'>
+          {%- if block.settings.title != blank -%}
+            <h2 class='footer__heading footer-heading heading--lg'>{{- block.settings.title | escape -}}</h2>
+          {%- endif -%}
+          {%- case block.type -%}
+            {%- when 'about' -%}
+              <address class='address'>
+                {%- if block.settings.about_paragraph != blank -%}
+                  <div class='address__title'>
+                    {{- block.settings.about_paragraph -}}
+                  </div>
                 {%- endif -%}
-                {%- case block.type -%}
-                  {%- when 'about' -%}
-                    <address class="address">
-                      {%- if block.settings.about_paragraph != blank -%}
-                        <div class="address__title">
-                          {{- block.settings.about_paragraph -}}
-                        </div>
-                      {%- endif -%}
-                      {%- if block.settings.linkFB != blank || block.settings.link_instagram != blank -%}
-                        <ul class="address__social social social__list">
-                          {%- if block.settings.linkFB != blank -%}
-                            <li class="social__item">
-                              <a class="cocial__link" href="{{- block.settings.linkFB -}}">
-                                <span class="visually-hidden">{{- 'general.social.links.facebook' | t -}}</span>
-                                {%- render 'alternate-icon-facebook' -%}
-                              </a>
-                            </li>
-                          {%- endif -%}
-                          {%- if block.settings.link_instagram != blank -%}
-                            <li class="social__item">
-                              <a class="cocial__link" href="{{- block.settings.link_instagram -}}">
-                                <span class="visually-hidden">{{- 'general.social.links.instagram' | t -}}</span>
-                                {%-render 'alternate-icon-instagram'-%}
-                              </a>
-                            </li>  
-                          {%- endif -%}
-                        </ul>
-                    {%- endif -%}
-                    </address>
-                  {%- when 'menu' -%}
-                    <section class="footer__section">
-                      {%- if block.settings.footer_menu != blank -%}
-                        <ul class="footer-navigation" role="list">
-                          {%- for link in block.settings.footer_menu.links -%}
-                            <li class="footer-navigation__item">
-                              <a class="footer-navigation__link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      {%- endif -%}
-                    </section>
-              
-                {%- endcase -%}
+                <ul class='address__social social social__list'>
+                  {%- if block.settings.linkFB != blank -%}
+                    <li class='social__item'>
+                      <a class='cocial__link' href='{{- block.settings.linkFB -}}'>
+                        <span class='visually-hidden'>{{- 'general.social.links.facebook' | t -}}</span>
+                        {%- render 'alternate-icon-facebook' -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.link_instagram != blank -%}
+                    <li class='social__item'>
+                      <a class='cocial__link' href='{{- block.settings.link_instagram -}}'>
+                        <span class='visually-hidden'>{{- 'general.social.links.instagram' | t -}}</span>
+                        {%- render 'alternate-icon-instagram' -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </address>
+            {%- when 'menu' -%}
+              <section class='footer__section'>
+                {%- if block.settings.footer_menu != blank -%}
+                  <ul class='footer-navigation' role='list'>
+                    {%- for link in block.settings.footer_menu.links -%}
+                      <li class='footer-navigation__item'>
+                        <a class='footer-navigation__link' href='{{- link.url -}}'>{{- link.title | escape -}}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
               </section>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
+          {%- endcase -%}
+        </section>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
 
-        <div class="footer-bottom">
-          {%- render 'alternate-footer-copyright' -%}
-        </div>
+  <div class='footer-bottom'>
+    {%- render 'alternate-footer-copyright' -%}
   </div>
+</div>
 
 {%- schema -%}
-  {
-    "name": "Alternate-footer",
-    "tag": "footer",
-    "class": "footer",
-    "max_blocks": 4,
-    "settings": [],
-     "blocks": [
-      {
+{
+  "name": "Alternate-footer",
+  "tag": "footer",
+  "class": "footer",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
       "type": "about",
       "name": "About",
-      
-      "settings":[
-       {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Heading"
-      },
-      {
-      "type": "richtext",
-      "id": "about_paragraph",
-      "label": "Paragraph"
-      },
+
+      "settings": [
         {
-      "type": "text",
-      "id": "linkFB",
-      "label": "Link FB",
-      "default": "Link FB"
-      },
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
         {
-      "type": "text",
-      "id": "link_instagram",
-      "label": "Link instagram",
-      "default": "Link instagram"
-      }
+          "type": "richtext",
+          "id": "about_paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "text",
+          "id": "linkFB",
+          "label": "Link FB",
+          "default": "Link FB"
+        },
+        {
+          "type": "text",
+          "id": "link_instagram",
+          "label": "Link instagram",
+          "default": "Link instagram"
+        }
       ]
-      },
-        {
+    },
+    {
       "type": "menu",
       "name": "Menu",
-      
-      "settings":[
-       {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Heading"
-      },
-      {
-      "type": "link_list",
-      "id": "footer_menu",
-      "label": "Menu"
-      }
+
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu",
+          "label": "Menu"
+        }
       ]
     }
-       
-    ]
-   
-  }
+  ]
+}
 {%- endschema -%}
-

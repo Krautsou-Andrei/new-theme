@@ -1,28 +1,38 @@
 <!doctype html>
-  <html>
-    <head>
-   
-    <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
-         
-    <script type="text/javascript" src="{{ 'load.js' | asset_url }}" defer></script>
-    <script type="text/javascript" src="{{ 'menu-burger.js' | asset_url }}" defer></script>
-       
-    <link rel="stylesheet" href= "{{ 'fonts.css' | asset_url }}">
-    <link rel="stylesheet" href= "{{ 'style.css' | asset_url }}">
+<html>
+  <head>
+    <script type='text/javascript' src='{{ 'menu-burger.js' | asset_url }}' defer></script>
+
+    <link rel='stylesheet' href='{{ 'fonts.css' | asset_url }}'>
+
+    <link rel='stylesheet' href='{{ 'theme.min.css' | asset_url }}'>
+    <script src='{{ 'theme.min.js' | asset_url }}' defer></script>
+
     <title>Susparsa</title>
 
-      {{ content_for_header }}
+    {{ content_for_header }}
+  </head>
+  <body>
+    <script>
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      };
+    </script>
+    <script>
+      document.shop = {
+        shop: `{{-shop.money_format -}}`,
+      };
+    </script>
 
-    </head>
-    <body>
-     {%- section 'alternate-header' -%}
-     {%- render 'alternate-breadcrumbs' -%}
-        
-      <main id="main" class="main" >
-        {{ content_for_layout }}
-      </main>
+    {%- section 'alternate-header' -%}
+    {%- render 'alternate-breadcrumbs' -%}
 
-      {%- section 'alternate-footer' -%}
-   </body>
-  </html>
-  
+    <main id='main' class='main'>
+      {{ content_for_layout }}
+    </main>
+
+    {%- section 'alternate-footer' -%}
+  </body>
+</html>

@@ -1,48 +1,100 @@
-<article class="recommendation__product recommendation-product">
-  <div class="recommendation-product__image image">
-    <a href="{{- product.url -}}">
-      <img class="image__recommendation-product" src="{{- product.featured_image | image_url: width: 248 -}}" alt="{{- product.featured_image.alt | escape -}}" >
+<article class='recommendation__product recommendation-product'>
+  <div class='recommendation-product__image image'>
+    <a href='{{- product.url -}}'>
+      <img
+        class='image__recommendation-product'
+        src='{{- product.featured_image | image_url: width: 248 -}}'
+        alt='{{- product.featured_image.alt | escape -}}'
+      >
     </a>
   </div>
   {%- unless product.available -%}
-    <ul class="recommendation-product__tags tags" role="list" aria-labelledby="ally_tags_label product-recommendation_heading_{{- forloop.index -}}">
-      <li class="tags__item tags__item--sold-out">{{- 'products.product.sold_out' |t -}}</li>
+    <ul
+      class='recommendation-product__tags tags'
+      role='list'
+      aria-labelledby='ally_tags_label product-recommendation_heading_{{- forloop.index -}}'
+    >
+      <li class='tags__item tags__item--sold-out'>{{- 'products.product.sold_out' | t -}}</li>
     </ul>
   {%- endunless -%}
-  <h3 class="recommendation-product__heading heading--xl"><a href="{{- product.url -}}" class="recommendation-product__link">{{- product.title -}}</a></h3>
-  <fieldset class="recommendation-product__fieldset">
-    <legend class="visually-hidden">Color product</legend>
-    <div class="radio-group">
-      <div class="radio-group__container radio--small">
-        <div class="radio radio-color">
-          <input id="recommendation-product_color_brown_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
-          <label class="radio__label" for="recommendation-product_color_brown_{{- forloop.index -}}">
-            <img class="radio__image" src="{{ 'color_brown.jpg' | asset_url }}" alt="brown">
-          </label>
-        </div>
+  <h3 class='recommendation-product__heading heading--xl'>
+    <a href='{{- product.url -}}' class='recommendation-product__link'>{{- product.title | escape -}}</a>
+  </h3>
+  {%- for product_option in product.options_with_values -%}
+    {%- case product_option.name | escape -%}
+      {%- when 'Color' -%}
+        {%- render 'alternate-radio-button-color',
+          product_option: product_option,
+          forloop: forloop,
+          id-text: product.id,
+          container_size: 'radio--small',
+          visually_hidden: 'visually-hidden'
+        -%}
+    {%- endcase -%}
+  {%- endfor -%}
 
-        <div class="radio radio-color">
-          <input id="recommendation-product_color_orange_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="orange">
-          <label class="radio__label" for="recommendation-product_color_orange_{{- forloop.index -}}">
-            <img class="radio__image" src="{{ 'color_orange.jpg' | asset_url }}" alt="orange">
-          </label>
-        </div>
-        <div class="radio radio-color">
-          <input id="recommendation-product_color_pink_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="pink">
-          <label class="radio__label" for="recommendation-product_color_pink_{{- forloop.index -}}">
-            <img class="radio__image" src="{{ 'color_pink.jpg' | asset_url }}" alt="pink">
-          </label>
-        </div>
-        <div class="radio radio-color">
-          <input id="recommendation-product_color_purpure-late_{{- forloop.index -}}" class="radio__input visually-hidden" type="radio" name="color_product-{{- forloop.index -}}" value="purpure-late">
-          <label class="radio__label" for="recommendation-product_color_purpure-late_{{- forloop.index -}}">
-            <img class="radio__image" src="{{ 'color_purpure-late.jpg' | asset_url }}" alt="purpure late">
-          </label>
+  {% comment %}
+    <fieldset class='recommendation-product__fieldset'>
+      <legend class='visually-hidden'>Color product</legend>
+      <div class='radio-group'>
+        <div class='radio-group__container radio--small'>
+          <div class='radio radio-color'>
+            <input
+              id='recommendation-product_color_brown_{{- forloop.index -}}'
+              class='radio__input visually-hidden'
+              type='radio'
+              name='color_product-{{- forloop.index -}}'
+              value='orange'
+            >
+            <label class='radio__label' for='recommendation-product_color_brown_{{- forloop.index -}}'>
+              <img class='radio__image' src='{{ 'color_brown.jpg' | asset_url }}' alt='brown'>
+            </label>
+          </div>
+
+          <div class='radio radio-color'>
+            <input
+              id='recommendation-product_color_orange_{{- forloop.index -}}'
+              class='radio__input visually-hidden'
+              type='radio'
+              name='color_product-{{- forloop.index -}}'
+              value='orange'
+            >
+            <label class='radio__label' for='recommendation-product_color_orange_{{- forloop.index -}}'>
+              <img class='radio__image' src='{{ 'color_orange.jpg' | asset_url }}' alt='orange'>
+            </label>
+          </div>
+          <div class='radio radio-color'>
+            <input
+              id='recommendation-product_color_pink_{{- forloop.index -}}'
+              class='radio__input visually-hidden'
+              type='radio'
+              name='color_product-{{- forloop.index -}}'
+              value='pink'
+            >
+            <label class='radio__label' for='recommendation-product_color_pink_{{- forloop.index -}}'>
+              <img class='radio__image' src='{{ 'color_pink.jpg' | asset_url }}' alt='pink'>
+            </label>
+          </div>
+          <div class='radio radio-color'>
+            <input
+              id='recommendation-product_color_purpure-late_{{- forloop.index -}}'
+              class='radio__input visually-hidden'
+              type='radio'
+              name='color_product-{{- forloop.index -}}'
+              value='purpure-late'
+            >
+            <label class='radio__label' for='recommendation-product_color_purpure-late_{{- forloop.index -}}'>
+              <img class='radio__image' src='{{ 'color_purpure-late.jpg' | asset_url }}' alt='purpure late'>
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-  </fieldset>
-  <p class="recommendation-product__price heading--xl">
-    <span class="price price--recommendation"> <abbr>{{- shop.currency }} </abbr>{{- product.price | money_without_currency -}}</span>
+    </fieldset>
+  {% endcomment %}
+  <p class='recommendation-product__price heading--xl'>
+    <span class='price price--recommendation'>
+      <abbr>{{- shop.currency }} </abbr>
+      {{- product.price | money_without_currency -}}
+    </span>
   </p>
 </article>

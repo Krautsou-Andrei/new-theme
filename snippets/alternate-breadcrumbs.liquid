@@ -1,11 +1,20 @@
-<nav class="breadcrums breadcrums__container" aria-label="Breadcrumb">
-        <ol class="breadcrums__list">
-          <li class="breadcrums__item"><a href="{{routes.root_url}}" class="breadcrums__page" title="Home">Home</a></li>
-          {%- if product.collections != blank -%}
-           {%- assign product_from_collection = product.collections | first -%}
-          <li class="breadcrums__item"><a href=" {{- product_from_collection.url -}}" class="breadcrums__page"> {{- product_from_collection.title -}}</a></li>
-          {%- endif -%}
-          <li class="breadcrums__item"><span class="breadcrums__page breadcrums__page--current" aria-current="page">{{- product.title -}}</span></li>
-        </ol>
+<nav class='breadcrumbs breadcrumbs__container' aria-label='Breadcrumb'>
+  <ol class='breadcrumbs__list'>
+    <li class='breadcrumbs__item'>
+      <a href='{{routes.root_url}}' class='breadcrumbs__page' title='Home'>{{- 'breadcrumbs.home' | t | escape -}}</a>
+    </li>
+    {%- if product.collections != blank -%}
+      {%- assign product_from_collection = product.collections | first -%}
+      <li class='breadcrumbs__item'>
+        <a href=' {{- product_from_collection.url -}}' class='breadcrumbs__page'>
+          {{- product_from_collection.title | escape -}}
+        </a>
+      </li>
+    {%- endif -%}
+    <li class='breadcrumbs__item'>
+      <span class='breadcrumbs__page breadcrumbs__page--current' aria-current='page'>
+        {{- product.title | escape -}}
+      </span>
+    </li>
+  </ol>
 </nav>
-

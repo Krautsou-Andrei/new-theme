@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style-position: inside;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-color-primary);
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+:active {
+  outline: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+  vertical-align: top;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: none;
+  border: 0px;
+  border-radius: 0;
+}
+
+input {
+  outline: none;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+  /* border-color: transparent; */
+}
+
+.address {
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+legend {
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

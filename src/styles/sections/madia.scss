@@ -1,0 +1,65 @@
+@media only screen and (max-width: 1159px) {
+  .product {
+    justify-content: center;
+  }
+
+  .product__image {
+    width: 100%;
+  }
+
+  .image__container {
+    margin: 0 auto;
+    max-width: 473px;
+  }
+
+  .product__image,
+  .product__info,
+  .product__description {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .menu {
+    display: none;
+  }
+
+  .menu-burger__wrap {
+    display: block;
+  }
+
+  .menu-burger-user {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .header__container {
+    padding-left: 1rem;
+    padding-right: 2.3rem;
+  }
+
+  .header__logo {
+    width: 6rem;
+    top: 1.9rem;
+  }
+
+  .breadcrumbs__container,
+  .footer__container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .menu-burger-user__list {
+    gap: 1rem;
+  }
+
+  .menu-link--account {
+    display: none;
+  }
+
+  .footer-top {
+    justify-content: center;
+  }
+}

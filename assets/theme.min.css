@@ -1,6 +1,8 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/styles/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
 :root {
   --width: 90rem;
-
   --pallete-mirage: #1a1f29;
   --pallete-shuttle-gray: #5e626b;
   --pallete-manatee: #929499;
@@ -16,35 +18,29 @@
   --pallete-sea-pink: #e9a0a7;
   --pallete-apricot-peach: #f8cab1;
   --pallete-antique-brass: #c88252;
-
   --social-link-color: var(--pallete-shuttle-gray);
-
   --text-color-primary: var(--pallete-mirage);
   --text-color-primary-activ: var(--pallete-manatee);
   --text-color-secondary: var(--pallete-shuttle-gray);
   --text-color-disabled: var(--pallete-silver);
   --text-error-added-color: var(--pallete-red);
   --text-heading-carousel-color: var(--pallete-deep-koamaru);
-
   --border-color-primary: var(--pallete-silver);
   --border-color-secondary: var(--pallete-mirage);
-
   --background-color-primary: var(--pallete-mercury);
   --background-color-secondary: var(--pallete-white);
   --background-color-header: var(--pallete-white);
   --background-color-disabled: var(--pallete-Concrete);
-
   --slash-color: var(--pallete-manatee);
-
   --button-burger-background-color: var(--pallete-mirage);
   --button-burger-background-color-active: var(--pallete-shuttle-gray);
   --button-background-color-primary: var(--pallete-white);
   --button-background-color-secondary: var(--pallete-deep-koamaru);
+  --button-background-color-disabled: var(--pallete-silver);
   --button-text-color-primary: var(--pallete-white);
   --button-text-color-secondary: var(--pallete-mirage);
   --button-border-color-primary: var(--pallete-silver);
   --button-border-color-secondary: var(--pallete-deep-koamaru);
-
   --text-xxl: 1.375rem;
   --text-xl: 1rem;
   --text-lg: 0.8125rem;
@@ -183,7 +179,6 @@ legend {
   overflow: hidden;
 }
 
-/* =================================== header ===========================================*/
 .header {
   position: sticky;
   top: 0px;
@@ -191,6 +186,7 @@ legend {
   background-color: var(--background-color-header);
   z-index: 2;
 }
+
 .header__container {
   position: relative;
   display: flex;
@@ -235,7 +231,6 @@ legend {
 .menu__item {
   max-width: 6rem;
   max-height: 2.5rem;
-
   overflow: hidden;
 }
 
@@ -342,13 +337,11 @@ legend {
 
 .menu-burger-button__burger.active span:nth-of-type(2) {
   top: 50%;
-
   transform: rotate(45deg);
 }
 
 .menu-burger-button__burger.active span:nth-of-type(3) {
   top: 50%;
-
   transform: rotate(-45deg);
 }
 
@@ -383,21 +376,19 @@ legend {
   font-weight: 500;
 }
 
-/* ====================================== breadcrumps ================================ */
-
-.breadcrums__container {
+.breadcrumbs__container {
   padding-top: 1.25rem;
   padding-right: 3.75rem;
   padding-bottom: 1.25rem;
   padding-left: 3.75rem;
 }
 
-.breadcrums__list {
+.breadcrumbs__list {
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-.breadcrums__list li + li::before {
+.breadcrumbs__list li + li::before {
   content: "";
   display: inline-block;
   margin-left: 0.8125rem;
@@ -407,22 +398,20 @@ legend {
   height: 0.875em;
 }
 
-.breadcrums__item {
+.breadcrumbs__item {
   display: flex;
   font-size: 0.75rem;
   line-height: 0.9375;
 }
 
-.breadcrums__page {
+.breadcrumbs__page {
   color: var(--text-color-primary);
 }
 
-.breadcrums__page--current {
+.breadcrumbs__page--current {
   color: var(--text-color-primary-activ);
   cursor: text;
 }
-
-/* =============================== product ====================================== */
 
 .container {
   max-width: var(--width);
@@ -476,9 +465,12 @@ legend {
 }
 
 .product__price {
-  margin-bottom: 1.5rem;
   color: var(--text-color-primary);
   letter-spacing: 0.01em;
+}
+
+.price__description {
+  margin-top: 1.5rem;
 }
 
 .price-description {
@@ -486,13 +478,11 @@ legend {
 }
 
 /* --------------------------------- product-info__form -------------------------------- */
-
 .form__fieldset + .form__fieldset {
   margin-top: 1.5rem;
 }
 
 /* --------------------------------- radio group --------------------------- */
-
 .radio-group__legend {
   margin-bottom: 0.75rem;
   font-size: 1rem;
@@ -509,8 +499,8 @@ legend {
 
 .radio {
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   background-color: var(--background-color-secondary);
 }
 
@@ -527,6 +517,8 @@ legend {
 
 .radio__label {
   display: block;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
   width: 100%;
   height: 100%;
   border: 0.0625rem solid var(--border-color-primary);
@@ -534,10 +526,11 @@ legend {
   cursor: pointer;
 }
 
-.radio-text .radio__label {
-  display: block;
-  padding-top: 0.5625rem;
-  padding-bottom: 0.5625rem;
+.radio-text .radio__label,
+.radio-color .radio__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
   line-height: 1.25;
   text-align: center;
@@ -570,12 +563,17 @@ legend {
   outline-offset: 0.125rem;
 }
 
-.radio__image {
+.radio-label-color {
   width: 100%;
   height: 100%;
+  border: 0.0625rem solid var(--border-color-primary);
 }
-/* ----------------------------- quantity ------------------------------- */
 
+.label-discription-color {
+  text-transform: capitalize;
+}
+
+/* ----------------------------- quantity ------------------------------- */
 .quantity__legend {
   margin-bottom: 0.75rem;
   letter-spacing: 0.01em;
@@ -714,20 +712,27 @@ legend {
   background-color: var(--button-background-color-secondary);
 }
 
+.button--primary[disabled]:hover,
+.button--secondary[disabled] {
+  color: var(--button-text-color-primary);
+  border-color: var(--border-color-secondary);
+  background-color: var(--button-background-color-disabled);
+  cursor: no-drop;
+}
+
 .form-out-stock {
   text-align: center;
   color: var(--text-error-added-color);
 }
 
 /* -------------------------- product footer ---------------------------------------------- */
-
 .product__footer {
   padding-top: 3rem;
 }
 
 .product__footer p {
   font-size: 1.125rem;
-  line-height: calc(22 / 18);
+  line-height: 1.2222222222;
   text-align: left;
   letter-spacing: -0.01em;
   color: var(--text-color-primary);
@@ -820,17 +825,17 @@ legend {
   height: 11px;
 }
 
-.accordion-section__button[aria-expanded="false"] .accordion-section__icon::before {
+.accordion-section__button[aria-expanded=false] .accordion-section__icon::before {
   transform: translate(-50%, -50%) rotate(-90deg);
   opacity: 1;
 }
 
-.accordion-section__button[aria-expanded="true"] .accordion-section__icon::after {
+.accordion-section__button[aria-expanded=true] .accordion-section__icon::after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
+
 .accordion-section__content {
   overflow: hidden;
-  height: 0;
 }
 
 .accordion-content-wrap {
@@ -845,6 +850,7 @@ legend {
 .accordion-content-wrap li + li {
   padding-top: 0.5rem;
 }
+
 /* =========================== recommendation =============================== */
 .section__recommendation {
   padding-left: 1rem;
@@ -863,7 +869,7 @@ legend {
 
 .recommendation__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, min(248px));
+  grid-template-columns: repeat(auto-fit, 248px);
   justify-content: center;
   gap: 4rem;
 }
@@ -891,12 +897,9 @@ legend {
 
 .recommendation-product__heading {
   margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   color: var(--text-color-primary);
-}
-
-.recommendation-product__fieldset {
-  margin-top: 0.5rem;
 }
 
 .radio--small {
@@ -906,8 +909,8 @@ legend {
 }
 
 .radio--small .radio {
-  width: 1rem;
-  height: 1rem;
+  min-width: 1rem;
+  min-height: 1rem;
 }
 
 .recommendation-product__price {
@@ -940,8 +943,6 @@ legend {
 .tags__item--sold-out {
   background-color: var(--background-color-secondary);
 }
-
-/* =========================== footer ============================= */
 
 .footer__container {
   padding-left: 5.5rem;
@@ -1019,22 +1020,17 @@ legend {
   padding-bottom: 2.0625rem;
 }
 
-/* -----------------------------media-------------------------- */
-
 @media only screen and (max-width: 1159px) {
   .product {
     justify-content: center;
   }
-
   .product__image {
     width: 100%;
   }
-
   .image__container {
     margin: 0 auto;
     max-width: 473px;
   }
-
   .product__image,
   .product__info,
   .product__description {
@@ -1042,46 +1038,37 @@ legend {
     padding-right: 0;
   }
 }
-
 @media only screen and (max-width: 980px) {
   .menu {
     display: none;
   }
-
   .menu-burger__wrap {
     display: block;
   }
-
   .menu-burger-user {
     display: block;
   }
 }
-
 @media only screen and (max-width: 576px) {
   .header__container {
     padding-left: 1rem;
     padding-right: 2.3rem;
   }
-
   .header__logo {
     width: 6rem;
     top: 1.9rem;
   }
-
-  .breadcrums__container,
+  .breadcrumbs__container,
   .footer__container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
   .menu-burger-user__list {
     gap: 1rem;
   }
-
   .menu-link--account {
     display: none;
   }
-
   .footer-top {
     justify-content: center;
   }

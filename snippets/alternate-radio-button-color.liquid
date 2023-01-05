@@ -1,0 +1,36 @@
+<fieldset aria-labelledby='radio-group-legend-color-{{- id-text | escape -}}' class='form__fieldset'>
+  <legend id='radio-group-legend-color-{{- id-text | escape -}}' class='radio-group__legend {{visually_hidden-}}'>
+    <span>{{- product_option.name | escape -}}</span> -
+    <span id='label-discription-{{- id-text | escape -}}' class='label-discription-color'>
+      {{- product_option.selected_value | escape -}}
+    </span>
+  </legend>
+  <div class='radio-group'>
+    <div class='radio-group__container {{ container_size-}}'>
+      {%- for value in product_option.values -%}
+        <div class='radio radio-color'>
+          <input
+            id='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
+            class='radio__input visually-hidden'
+            type='radio'
+            name='options[{{- product_option.name | escape -}}]'
+            value='{{- value | escape -}}'
+            {%- if product_option.selected_value == value -%}
+              checked
+            {%- endif -%}
+          >
+          <label
+            class='radio__label'
+            for='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
+            title='{{-value | escape -}}'
+          >
+            <span
+              class='radio-label-color'
+              style='background-color: {{-value  | escape -}}'
+            ></span>
+          </label>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</fieldset>
