@@ -1,5 +1,5 @@
-<fieldset aria-labelledby='radio-group-legend-text-{{- id-text | escape -}}' class='form__fieldset'>
-  <legend id='radio-group-legend-text-{{- id-text -}}' class='radio-group__legend'>
+<fieldset class='form__fieldset' aria-labelledby='radio-group-legend-text-{{- id-text | escape -}}'>
+  <legend class='radio-group__legend' id='radio-group-legend-text-{{- id-text -}}'>
     {{- product_option.name | escape -}}
   </legend>
   <div class='radio-group'>
@@ -7,8 +7,8 @@
       {%- for value in product_option.values -%}
         <div class='radio radio-text'>
           <input
-            id='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
             class='radio__input visually-hidden'
+            id='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
             type='radio'
             name='options[{{- product_option.name | escape -}}]'
             value='{{- value | escape -}}'

@@ -1,3 +1,5 @@
+import Listeners from './listeners.js';
+
 const SELECTORS = {
   ACCORDION: '[data-accordion]',
   BUTTON: '[data-accordion-button]',
@@ -33,9 +35,9 @@ class Collapse {
     this.animation = null;
 
     this.toggle();
-    this.toggle = this.toggle.bind(this);
 
-    this.button.addEventListener('click', this.toggle);
+    this._listeners = new Listeners();
+    this._listeners.add(this.button, 'click', this.toggle.bind(this));
   }
 
   toggle() {
@@ -50,18 +52,20 @@ class Collapse {
     }
   }
 
+  getListeners() {
+    return (this.listenrs = this._listeners);
+  }
+
   closed() {
     this.state = STATES_SECTION.ANIMATED;
     this._animateContent(false, STATES_SECTION.CLOSED);
     this.button.setAttribute('aria-expanded', false);
-    // this.content.tabIndex = -1;
   }
 
   opened() {
     this.state = STATES_SECTION.ANIMATED;
     this._animateContent(true, STATES_SECTION.OPENED);
     this.button.setAttribute('aria-expanded', true);
-    // this.content.tabIndex = 0;
   }
 
   _animateContent(reverse, endState) {
@@ -80,6 +84,7 @@ class Collapse {
       },
       config,
     );
+
     this.animation.addEventListener('finish', () => {
       this.animation = null;
       this.state = endState;
@@ -87,7 +92,7 @@ class Collapse {
   }
 
   destroy() {
-    this.button.removeEventListener('click', this.toggle);
+    this._listeners.removeAll();
   }
 }
 
@@ -96,10 +101,10 @@ export default class Accordion {
     this.accordion = node.querySelector(SELECTORS.ACCORDION);
     this.sections = this.accordion.querySelectorAll(SELECTORS.SECTION);
     this.sectionsInit = [];
+    this._listeners = new Listeners();
     this.alwaysOpenOne = this.accordion.getAttribute(SELECTORS.ALWAYS_OPEN_ONE);
 
     this.init();
-    console.log('this.alwaysOpenOne', typeof this.alwaysOpenOne);
   }
 
   init() {
@@ -109,7 +114,11 @@ export default class Accordion {
 
       this.closedSections = this.closedSections.bind(this);
       if (this.alwaysOpenOne === 'true') {
-        section.button.addEventListener('click', this.closedSections);
+        this._listeners.add(
+          section.button,
+          'click',
+          this.closedSections.bind(this),
+        );
       }
     });
 
@@ -126,7 +135,6 @@ export default class Accordion {
       });
     } else {
       this.sectionsInit.forEach((section) => {
-        console.log('false', section.showInLoadSection);
         if (section.showInLoadSection === 'true' && count <= 0) {
           count++;
           section.opened();
@@ -145,9 +153,9 @@ export default class Accordion {
   }
 
   destroy() {
+    this._listeners.removeAll();
     this.sectionsInit.forEach((element) => {
-      element.button.removeEventListener('click', this.closedSections);
-      element.destroy();
+      element.getListeners().removeAll();
     });
   }
 }

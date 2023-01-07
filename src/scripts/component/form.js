@@ -29,21 +29,24 @@ export default class Form {
 
     this.onQuantityChange(event);
 
+    this.handleErrorMessage();
+
     const url = getUrlWithVariant(window.location.href, variant.id);
     window.history.replaceState({path: url}, '', url);
   }
 
   onQuantityChange(event) {
+    this.handleErrorMessage();
     const variant = event.dataset.variant;
     const newQuantity = event.dataset.quantity;
-    console.log('quantityID', variant.id);
+
     this.changePrice(variant, newQuantity);
+
     const variants = window.variants_inventory;
     let quantityVariant;
     const array = Object.keys(variants);
 
     array.forEach((element) => {
-      console.log('quantityVarian,', typeof element);
       if (element == variant.id) {
         quantityVariant = element;
       }
@@ -58,8 +61,6 @@ export default class Form {
 
     newPrice = formatMoney(newPrice, this.container.dataset.moneyFormat);
     const price = this.container.querySelector(SELECTORS_FORM.PRICE);
-
-    console.log('newPrice', newPrice);
 
     price.textContent = newPrice;
   }
@@ -96,7 +97,6 @@ export default class Form {
   }
 
   onFormSubmit(event) {
-    console.log('event', event);
     event.preventDefault();
     fetch(event.target.action + '.js', {
       method: event.target.method,
@@ -107,7 +107,6 @@ export default class Form {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         if (response.status) {
           this.handleErrorMessage(response.description);
         } else {

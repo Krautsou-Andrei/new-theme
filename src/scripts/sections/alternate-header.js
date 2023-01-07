@@ -1,17 +1,18 @@
 import {register} from '@shopify/theme-sections';
+import Listeners from '../component/listeners.js';
+import MenuBurger from '../component/menu-burger.js';
 
 const SELECTORS = {
   NEW_QUANTITY: 'cart-quantity',
   QUANTITY: '.cart-preview__quantity',
 };
 
-class Quantity {
+class QuantityCartView {
   constructor(node) {
     this.element = node;
     this.quantity = this.element.querySelectorAll(SELECTORS.QUANTITY);
-
-    this.change = this.change.bind(this);
-    document.addEventListener('cart:added', this.change);
+    this._listeners = new Listeners();
+    this._listeners.add(document, 'cart:added', this.change.bind(this));
   }
 
   change(event) {
@@ -29,18 +30,20 @@ class Quantity {
   }
 
   destroy() {
-    document.removeEventListener('cart:added', this.change);
+    this._listeners.removeAll(document, 'cart:added', this.change.bind(this));
   }
 }
 
 register('alternate-header', {
-  quantity: null,
+  quantityCartView: null,
 
   onLoad() {
-    this.quantity = new Quantity(this.container);
+    this.quantityCartView = new QuantityCartView(this.container);
+    this.menuBurger = new MenuBurger(this.container);
   },
 
   onUnload() {
-    this.quantity.destroy();
+    this.quantityCartView.destroy();
+    this.menuBurger.destroy();
   },
 });

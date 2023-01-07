@@ -1,11 +1,13 @@
 <!doctype html>
-<html>
+<html lang='en'>
   <head>
-    <script type='text/javascript' src='{{ 'menu-burger.js' | asset_url }}' defer></script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
 
     <link rel='stylesheet' href='{{ 'fonts.css' | asset_url }}'>
-
     <link rel='stylesheet' href='{{ 'theme.min.css' | asset_url }}'>
+
     <script src='{{ 'theme.min.js' | asset_url }}' defer></script>
 
     <title>Susparsa</title>
@@ -20,16 +22,11 @@
         unavailable: `{{ 'products.product.unavailable' | t }}`,
       };
     </script>
-    <script>
-      document.shop = {
-        shop: `{{-shop.money_format -}}`,
-      };
-    </script>
 
     {%- section 'alternate-header' -%}
     {%- render 'alternate-breadcrumbs' -%}
 
-    <main id='main' class='main'>
+    <main id='main' class='main' tabindex='-1'>
       {{ content_for_layout }}
     </main>
 

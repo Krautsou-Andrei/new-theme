@@ -9,13 +9,10 @@
     -}}
   '
 >
+  <a class='skip-to ' href='#product-info'>{{- 'accessibility.skip_to_product_info' | t -}}</a>
   <div class='product__image image'>
     <div class='image__container'>
-      <img
-        class='image__product'
-        src='{{- product.featured_image | image_url: width: 473 -}}'
-        alt='{{- product.featured_image.alt | escape -}}'
-      >
+      {{ product.featured_image | image_url: width: 473 | image_tag: class: 'image__product', width: null }}
     </div>
   </div>
   <script>
@@ -24,12 +21,12 @@
     window.variants_inventory[{{- variant.id -}}] = {{ variant.inventory_quantity | json }};
     {%- endfor -%}
   </script>
-  <div class='product__info product-info'>
+  <div class='product__info product-info' id='product-info' tabindex='-1'>
     <div class='product-info__container'>
       <header class='product__header'>
         <h1 class='product__heading heading--xxl'>{{- product.title | escape -}}</h1>
         <span class='product__price price'>
-          <span class='price__value' id='price-value'>
+          <span class='price__value' id='price-value' aria-live='polite'>
             {{- product.selected_or_first_available_variant.price | money_with_currency -}}
           </span>
         </span>
@@ -37,7 +34,7 @@
           <p class='price__description price-description'>{{- 'products.product.include_taxes' | t -}}</p>
         {%- endif -%}
       </header>
-      <h2 class='visually-hidden'>выбор характеристик продукта</h2>
+      <h2 class='visually-hidden'>{{- 'products.product.choose_options' | t -}}</h2>
       {% form 'product', product, id: 'product-form', class: 'product__form form' %}
         <input type='hidden' name='sections' value='alternate-header'>
         <input type='hidden' name='sections_url' value='{{ routes.root_url }}'>
@@ -66,13 +63,14 @@
           <div class='quantity'>
             <div class='quantity__controls' data-quantity>
               <input
-                id='quantity'
                 class='quantity__input'
+                id='quantity'
                 type='number'
                 min='1'
                 max='999'
                 value='1'
                 name='quantity'
+                aria-live='polite'
                 data-input
               >
               <button class='quantity__button quantity__button--decrease' type='button' data-decrease>
@@ -95,6 +93,7 @@
             type='submit'
             name='type'
             value='add'
+            aria-live='polite'
             {%- unless product.selected_or_first_available_variant.available -%}
               disabled
             {%- endunless -%}
@@ -119,11 +118,11 @@
           >
             <span>{{- 'products.product.buy_it_now' | t -}}</span>
           </button>
-          <div class='form-out-stock' hidden></div>
+          <div class='form-out-stock' hidden role='alert'></div>
           {% comment %} {{ form | payment_button }} {% endcomment %}
         </div>
       {% endform %}
-      <footer class='product__footer' tabindex='0'>
+      <footer class='product__footer'>
         {%- if product.description != blank -%}
           {{- product.description -}}
         {%- endif -%}
@@ -148,8 +147,8 @@
           >
             <h3 class='accordion-section__heading heading--xl'>
               <button
-                id='accordion{{- forloop.index -}}id'
                 class='accordion-section__button'
+                id='accordion{{- forloop.index -}}id'
                 type='button'
                 aria-expanded='true'
                 aria-controls='sect{{- forloop.index -}}'
@@ -164,8 +163,8 @@
             </h3>
             {%- if block.settings.text != blank -%}
               <div
-                id='sect{{- forloop.index -}}'
                 class='accordion-section__content'
+                id='sect{{- forloop.index -}}'
                 role='region'
                 aria-labelledby='accordion{{- forloop.index -}}id'
                 data-accordion-content

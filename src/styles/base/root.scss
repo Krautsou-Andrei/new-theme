@@ -19,6 +19,10 @@
 
   --social-link-color: var(--pallete-shuttle-gray);
 
+  --skip-to-background-color-hover: var(--pallete-mirage);
+  --skip-to-text-color-hover: var(--pallete-white);
+  --skip-to-box-shadow-active: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   --text-color-primary: var(--pallete-mirage);
   --text-color-primary-activ: var(--pallete-manatee);
   --text-color-secondary: var(--pallete-shuttle-gray);
@@ -45,6 +49,13 @@
   --button-text-color-secondary: var(--pallete-mirage);
   --button-border-color-primary: var(--pallete-silver);
   --button-border-color-secondary: var(--pallete-deep-koamaru);
+
+  --input-button-color-hover: var(--pallete-mirage);
+  --input-border-color-hover: var(--pallete-mirage);
+  --input-button-border-color-disabled: var(--pallete-silver);
+  --input-button-color-disabled: var(--pallete-silver);
+  --input-background-color-hover: var(--pallete-mercury);
+  --input-background-color: var(--pallete-white);
 
   --text-xxl: 1.375rem;
   --text-xl: 1rem;

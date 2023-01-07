@@ -62,7 +62,9 @@
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
+    "home_page": "Home page",
     "skip_to_product_info": "Skip to product information",
+    "quantity_of_items_in_the_cart": "quantity of items in the cart",
     "close": "Close",
     "unit_price_separator": "per",
     "vendor": "Vendor:",

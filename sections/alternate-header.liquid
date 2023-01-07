@@ -6,12 +6,13 @@
   <a class='skip-to' href='#main'>{{- 'accessibility.skip_to_product_info' | t -}}</a>
 
   {%- if section.settings.header_menu != blank -%}
-    <div class='menu-burger__wrap' data-menu-burger-wrap>
+    <div class='menu-burger__wrap' data-menu-burger>
       <button
-        type='button'
         class='menu-burger__button menu-burger-button'
-        data-menu-burger-button
+        type='button'
+        aria-label='{{- 'sections.header.menu' | t -}}'
         aria-expanded='false'
+        data-menu-burger-button
       >
         <span class='menu-burger-button__burger'>
           <span></span>
@@ -20,7 +21,7 @@
         </span>
       </button>
 
-      <nav class='header__menu menu-burger' inert data-menu-burger>
+      <nav class='header__menu menu-burger' inert data-menu-burger-content>
         <ul class='menu-burger__list' role='list'>
           {%- if section.settings.header_menu.links.size > 0 -%}
             {%- for link in section.settings.header_menu.links -%}
@@ -60,7 +61,7 @@
     </nav>
   {%- endif -%}
   <a class='header__logo logo' href='{{ routes.root_url }}'>
-    <span class='visually-hidden'>Homepage</span>
+    <span class='visually-hidden'>{{- 'accessibility.home_page' | t -}}</span>
     {%- if section.settings.logo != blank -%}
       {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
       {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
@@ -84,8 +85,13 @@
       <li class='menu__item'>
         <a class='menu__link link cart-preview' href='{{- routes.cart_url -}}'>
           {{- 'templates.cart.cart' | t }}
-          <span id='cart-quantity' class='cart-preview__quantity'
-            >(
+          <span
+            class='cart-preview__quantity'
+            id='cart-quantity'
+            aria-live='polite'
+          >
+            <span class='visually-hidden'>{{- 'accessibility.quantity_of_items_in_the_cart' | t -}}</span>
+            (
             {{- cart.item_count -}}
             )</span
           ></a
@@ -96,7 +102,11 @@
   <nav class='header__menu menu-burger-user'>
     <ul class='menu-burger-user__list' role='list'>
       <li class='menu-burger-user__item menu-link--account'>
-        <a class='menu-burger-user__link link' href='{{- routes.account_url -}}'>
+        <a
+          class='menu-burger-user__link link'
+          href='{{- routes.account_url -}}'
+          aria-label='{{- 'customer.account.title' | t }}'
+        >
           <svg
             class='menu-burger-user__svg'
             xmlns='http://www.w3.org/2000/svg'
@@ -110,7 +120,11 @@
         </a>
       </li>
       <li class='menu-burger-user__item'>
-        <a class='menu-burger-user__link link' href='{{- routes.search_url -}}'>
+        <a
+          class='menu-burger-user__link link'
+          href='{{- routes.search_url -}}'
+          aria-label='{{- 'general.search.search' | t -}}'
+        >
           <svg
             class='menu-burger-user__svg'
             xmlns='http://www.w3.org/2000/svg'
@@ -123,7 +137,10 @@
         </a>
       </li>
       <li class='menu-burger-user__item'>
-        <a class='menu-burger-user__link link cart-preview' href='{{- routes.cart_url -}}'>
+        <a
+          class='menu-burger-user__link link cart-preview'
+          href='{{- routes.cart_url -}}'
+        >
           <svg
             class='menu-burger-user__svg'
             xmlns='http://www.w3.org/2000/svg'
@@ -137,8 +154,15 @@
             <circle cx="7" cy="22" r="2" />
             <circle cx="17" cy="22" r="2" />
           </svg>
-          <span class='cart-preview__quantity'
-            >(
+          <span
+            class='cart-preview__quantity'
+            aria-live='polite'
+          >
+            <span class='visually-hidden'>
+              {{- 'templates.cart.cart' | t }}
+              {{- 'accessibility.quantity_of_items_in_the_cart' | t -}}
+            </span>
+            (
             {{- cart.item_count -}}
             )</span
           >

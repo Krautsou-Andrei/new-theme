@@ -1,7 +1,7 @@
 <nav class='breadcrumbs breadcrumbs__container' aria-label='Breadcrumb'>
   <ol class='breadcrumbs__list'>
     <li class='breadcrumbs__item'>
-      <a href='{{routes.root_url}}' class='breadcrumbs__page' title='Home'>{{- 'breadcrumbs.home' | t | escape -}}</a>
+      <a href='{{routes.root_url}}' class='breadcrumbs__page' title='Home'>{{- 'breadcrumbs.home' | t -}}</a>
     </li>
     {%- if product.collections != blank -%}
       {%- assign product_from_collection = product.collections | first -%}
