@@ -3,7 +3,6 @@ import {ProductForm} from '@shopify/theme-product-form';
 
 import Accordion from '../component/accordion';
 import Form from '../component/form';
-import Quantity from '../component/quantity';
 
 // -------------------------------------------register---------------------------
 
