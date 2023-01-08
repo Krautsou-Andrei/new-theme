@@ -17,7 +17,7 @@
                 <ul class='address__social social social__list'>
                   {%- if block.settings.linkFB != blank -%}
                     <li class='social__item'>
-                      <a class='cocial__link' href='{{- block.settings.linkFB -}}'>
+                      <a class='cocial__link link' href='{{- block.settings.linkFB -}}'>
                         <span class='visually-hidden'>{{- 'general.social.links.facebook' | t -}}</span>
                         {%- render 'alternate-icon-facebook' -%}
                       </a>
@@ -25,7 +25,7 @@
                   {%- endif -%}
                   {%- if block.settings.link_instagram != blank -%}
                     <li class='social__item'>
-                      <a class='cocial__link' href='{{- block.settings.link_instagram -}}'>
+                      <a class='cocial__link link' href='{{- block.settings.link_instagram -}}'>
                         <span class='visually-hidden'>{{- 'general.social.links.instagram' | t -}}</span>
                         {%- render 'alternate-icon-instagram' -%}
                       </a>
@@ -39,7 +39,7 @@
                   <ul class='footer-navigation' role='list'>
                     {%- for link in block.settings.footer_menu.links -%}
                       <li class='footer-navigation__item'>
-                        <a class='footer-navigation__link' href='{{- link.url -}}'>{{- link.title | escape -}}</a>
+                        <a class='footer-navigation__link link' href='{{- link.url -}}'>{{- link.title | escape -}}</a>
                       </li>
                     {%- endfor -%}
                   </ul>

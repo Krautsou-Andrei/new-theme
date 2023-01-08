@@ -15,14 +15,6 @@
     {{ content_for_header }}
   </head>
   <body>
-    <script>
-      window.variantStrings = {
-        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-        soldOut: `{{ 'products.product.sold_out' | t }}`,
-        unavailable: `{{ 'products.product.unavailable' | t }}`,
-      };
-    </script>
-
     {%- section 'alternate-header' -%}
     {%- render 'alternate-breadcrumbs' -%}
 
@@ -31,5 +23,13 @@
     </main>
 
     {%- section 'alternate-footer' -%}
+
+    <script>
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      };
+    </script>
   </body>
 </html>

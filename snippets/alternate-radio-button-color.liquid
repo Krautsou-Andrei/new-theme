@@ -13,7 +13,7 @@
             class='radio__input visually-hidden'
             id='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
             type='radio'
-            name='options[{{- product_option.name | escape -}}]'
+            name='options[{{- product_option.name | escape -}}]{{- id-text | escape -}}'
             value='{{- value | escape -}}'
             {%- if product_option.selected_value == value -%}
               checked

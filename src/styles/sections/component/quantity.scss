@@ -25,7 +25,7 @@
   text-align: center;
 
   background: transparent;
-  transition: all 0.3s;
+  transition: var(--transition);
 }
 
 .quantity__input:hover {
@@ -61,7 +61,7 @@
   border: 0.0625rem solid var(--border-color-primary);
 
   background: var(--input-background-color);
-  transition: all 0.3s;
+  transition: var(--transition);
   cursor: pointer;
 }
 

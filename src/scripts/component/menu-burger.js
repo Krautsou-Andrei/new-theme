@@ -110,6 +110,3 @@ export default class MenuBurger {
     this._listeners.removeAll();
   }
 }
-
-// const menuBurger = document.querySelector(SELECTORS_MENU_BURGER.MENU);
-// new MenuBurger(menuBurger);

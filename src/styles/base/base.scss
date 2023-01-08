@@ -6,6 +6,7 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -54,8 +55,8 @@ a {
   color: var(--text-color-primary);
 }
 
-a:active,
-a:hover {
+a:hover,
+a:active {
   outline: 0;
 }
 
@@ -78,19 +79,21 @@ summary {
 }
 
 img {
+  vertical-align: top;
   max-width: 100%;
   height: auto;
   border-style: none;
-  vertical-align: top;
 }
 
 button {
   margin: 0;
   padding: 0;
-  overflow: visible;
-  background: none;
+
   border: 0px;
   border-radius: 0;
+
+  overflow: visible;
+  background: none;
 }
 
 input {
@@ -101,7 +104,6 @@ fieldset {
   padding: 0;
   margin: 0;
   border: none;
-  /* border-color: transparent; */
 }
 
 .address {
@@ -114,17 +116,33 @@ legend {
   padding: 0;
 }
 
-::-webkit-scrollbar {
-  width: 0;
+.link:hover {
+  color: var(--text-link-color-active);
+  text-decoration: underline;
+  text-decoration-color: var(--text-color-primary);
+  transition: var(--transition);
+}
+
+.link--svg:hover {
+  transform: scale(1.1);
+}
+
+.link:active {
+  position: relative;
+  top: 2px;
 }
 
 .visually-hidden {
   position: absolute;
+
+  margin: -1px;
+  padding: 0;
+
   width: 1px;
   height: 1px;
-  margin: -1px;
+
   border: 0;
-  padding: 0;
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);

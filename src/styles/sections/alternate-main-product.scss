@@ -9,8 +9,9 @@
 .product {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  // align-items: center;
   row-gap: 3.875rem;
+  column-gap: 2rem;
 }
 
 .product__container {
@@ -35,7 +36,7 @@
 
 /* ------------------------------- product-info  ----------------------------------------*/
 .product__info {
-  padding-left: 4rem;
+  padding-left: 2rem;
   padding-right: 7.5625rem;
 }
 
@@ -149,6 +150,10 @@
 
   background-color: var(--button-background-color-disabled);
   cursor: no-drop;
+}
+
+.button:active {
+  top: 2px;
 }
 
 .form-out-stock {

@@ -1,12 +1,10 @@
 <article class='recommendation__product recommendation-product'>
   <div class='recommendation-product__image image'>
-    <a href='{{- product.url -}}'>
-      <img
-        class='image__recommendation-product'
-        src='{{- product.featured_image | image_url: width: 248 -}}'
-        alt='{{- product.featured_image.alt | escape -}}'
-      >
-    </a>
+    <img
+      class='image__recommendation-product'
+      src='{{- product.featured_image | image_url: width: 248 -}}'
+      alt='{{- product.featured_image.alt | escape -}}'
+    >
   </div>
   {%- unless product.available -%}
     <ul
@@ -18,7 +16,7 @@
     </ul>
   {%- endunless -%}
   <h3 class='recommendation-product__heading heading--xl'>
-    <a href='{{- product.url -}}' class='recommendation-product__link'>{{- product.title | escape -}}</a>
+    <a class='recommendation-product__link link' href='{{- product.url -}}'>{{- product.title | escape -}}</a>
   </h3>
   {%- for product_option in product.options_with_values -%}
     {%- case product_option.name | escape -%}

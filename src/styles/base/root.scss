@@ -16,6 +16,7 @@
   --pallete-sea-pink: #e9a0a7;
   --pallete-apricot-peach: #f8cab1;
   --pallete-antique-brass: #c88252;
+  --pallete-wild-sand: #f5f5f5;
 
   --social-link-color: var(--pallete-shuttle-gray);
 
@@ -23,12 +24,15 @@
   --skip-to-text-color-hover: var(--pallete-white);
   --skip-to-box-shadow-active: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   --text-color-primary: var(--pallete-mirage);
   --text-color-primary-activ: var(--pallete-manatee);
   --text-color-secondary: var(--pallete-shuttle-gray);
   --text-color-disabled: var(--pallete-silver);
   --text-error-added-color: var(--pallete-red);
   --text-heading-carousel-color: var(--pallete-deep-koamaru);
+  --text-link-color-active: var(--pallete-black);
 
   --border-color-primary: var(--pallete-silver);
   --border-color-secondary: var(--pallete-mirage);
@@ -57,7 +61,12 @@
   --input-background-color-hover: var(--pallete-mercury);
   --input-background-color: var(--pallete-white);
 
+  --menu-burger-background-color: var(--pallete-wild-sand);
+  --menu-burger-transition-time: 0.5s;
+
   --text-xxl: 1.375rem;
   --text-xl: 1rem;
   --text-lg: 0.8125rem;
+
+  --transition: all 0.3s;
 }
