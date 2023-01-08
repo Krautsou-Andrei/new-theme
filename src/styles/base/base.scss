@@ -1,0 +1,156 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style-position: inside;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-color-primary);
+}
+
+a:hover,
+a:active {
+  outline: 0;
+}
+
+:active {
+  outline: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  overflow: visible;
+  background: none;
+}
+
+input {
+  outline: none;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.address {
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+legend {
+  padding: 0;
+}
+
+.link:hover {
+  color: var(--text-link-color-active);
+  text-decoration: underline;
+  text-decoration-color: var(--text-color-primary);
+  transition: var(--transition);
+}
+
+.link--svg:hover {
+  transform: scale(1.1);
+}
+
+.link:active {
+  position: relative;
+  top: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  margin: -1px;
+  padding: 0;
+
+  width: 1px;
+  height: 1px;
+
+  border: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion) {
+  .button {
+    transition: unset;
+  }
+}

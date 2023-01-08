@@ -135,8 +135,11 @@
             }
           }
         },
-        "block_order": ["announcement-bar-0"],
-        "settings": {}
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
       },
       "header": {
         "type": "header",
@@ -176,11 +179,15 @@
             "type": "text",
             "settings": {
               "heading": "Our mission",
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
             }
           }
         },
-        "block_order": ["footer-0", "footer-1", "footer-2"],
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2"
+        ],
         "settings": {
           "color_scheme": "background-1",
           "newsletter_enable": true,
@@ -211,7 +218,7 @@
       "alternate-header": {
         "type": "alternate-header",
         "settings": {
-          "logo": "shopify://shop_images/logo.png",
+          "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_width": 140,
           "header_menu": "site"
         }
@@ -223,7 +230,7 @@
             "type": "about",
             "settings": {
               "title": "About",
-              "about_paragraph": "<p>Suspara Store</p><p>Geneva, Switzerland</p>",
+              "about_paragraph": "<p>Suspara Store<\/p><p>Geneva, Switzerland<\/p>",
               "linkFB": "Link FB",
               "link_instagram": "Link instagram"
             }
@@ -243,11 +250,18 @@
             }
           }
         },
-        "block_order": ["4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9", "b34e930e-7b4f-4290-a638-7e4b2ab7b81b", "d7a6de9d-fc96-47f3-b8c3-f92e0122f872"],
-        "settings": {}
+        "block_order": [
+          "4a9be236-08b4-4e80-bb49-d5dbdfb5c4f9",
+          "b34e930e-7b4f-4290-a638-7e4b2ab7b81b",
+          "d7a6de9d-fc96-47f3-b8c3-f92e0122f872"
+        ],
+        "settings": {
+        }
       }
     },
-    "content_for_index": []
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {
@@ -386,8 +400,11 @@
               }
             }
           },
-          "block_order": ["announcement-bar-0"],
-          "settings": {}
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {
+          }
         },
         "header": {
           "type": "header",
@@ -427,11 +444,15 @@
               "type": "text",
               "settings": {
                 "heading": "Our mission",
-                "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+                "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
               }
             }
           },
-          "block_order": ["footer-0", "footer-1", "footer-2"],
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
+          ],
           "settings": {
             "color_scheme": "background-1",
             "newsletter_enable": true,

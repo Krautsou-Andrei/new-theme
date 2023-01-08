@@ -1,0 +1,29 @@
+<fieldset class='form__fieldset' aria-labelledby='radio-group-legend-text-{{- id-text | escape -}}'>
+  <legend class='radio-group__legend' id='radio-group-legend-text-{{- id-text -}}'>
+    {{- product_option.name | escape -}}
+  </legend>
+  <div class='radio-group'>
+    <div class='radio-group__container'>
+      {%- for value in product_option.values -%}
+        <div class='radio radio-text'>
+          <input
+            class='radio__input visually-hidden'
+            id='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
+            type='radio'
+            name='options[{{- product_option.name | escape -}}]'
+            value='{{- value | escape -}}'
+            {%- if product_option.selected_value == value -%}
+              checked
+            {%- endif -%}
+          >
+          <label
+            class='radio__label'
+            for='{{- product_option.name | escape -}}-{{- forloop.index -}}-{{- id-text | escape -}}'
+          >
+            {{- value | escape -}}
+          </label>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</fieldset>
