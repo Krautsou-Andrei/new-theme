@@ -16,13 +16,13 @@
   --pallete-apricot-peach: rgb(248, 202, 177);
   --pallete-antique-brass: rgb(200, 130, 82);
   --pallete-wild-sand: rgb(245, 245, 245);
+  --pallete-indigo: rgb(92, 106, 196);
   --social-link-color: var(--pallete-shuttle-gray);
   --skip-to-background-color-hover: var(--pallete-mirage);
   --skip-to-text-color-hover: var(--pallete-white);
   --skip-to-box-shadow-active: 0 4px 4px rgba(0, 0, 0, 0.25);
   --box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   --text-color-primary: var(--pallete-mirage);
-  --text-color-primary-activ: var(--pallete-manatee);
   --text-color-secondary: var(--pallete-shuttle-gray);
   --text-color-disabled: var(--pallete-silver);
   --text-error-added-color: var(--pallete-red);
@@ -52,6 +52,7 @@
   --input-background-color: var(--pallete-white);
   --menu-burger-background-color: var(--pallete-wild-sand);
   --menu-burger-transition-time: 0.5s;
+  --breadcrumbs-page-current-color: var(--pallete-indigo);
   --text-xxl: 1.375rem;
   --text-xl: 1rem;
   --text-lg: 0.8125rem;
