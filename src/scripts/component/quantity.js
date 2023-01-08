@@ -1,4 +1,4 @@
-import Listeners from './listeners.js';
+import Listeners from './listeners';
 
 const SELECTORS_QUANTITY = {
   INCREASE: '[data-increase]',
@@ -88,6 +88,7 @@ export default class CreatQuanyityView {
     this._listeners.add(this.increase, 'click', this.onIncrease.bind(this));
     this._listeners.add(this.quantity, 'change', this.render.bind(this));
   }
+
   render() {
     const value = this.quantity.getValue();
     this.input.step = this.options.step || OPTIONS.step;

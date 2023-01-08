@@ -1,8 +1,9 @@
 import {register} from '@shopify/theme-sections';
 import {ProductForm} from '@shopify/theme-product-form';
+
 import Accordion from '../component/accordion';
 import Form from '../component/form';
-import Quantity from '../component/quantity.js';
+import Quantity from '../component/quantity';
 
 // -------------------------------------------register---------------------------
 
@@ -41,7 +42,6 @@ register('alternate-main-product', {
     if (this.accordeon) {
       this.accordeon.destroy();
     }
-    return;
   },
 
   onBlockSelect(event) {

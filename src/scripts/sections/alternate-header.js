@@ -1,6 +1,7 @@
 import {register} from '@shopify/theme-sections';
-import Listeners from '../component/listeners.js';
-import MenuBurger from '../component/menu-burger.js';
+
+import Listeners from '../component/listeners';
+import MenuBurger from '../component/menu-burger';
 
 const SELECTORS = {
   NEW_QUANTITY: 'cart-quantity',

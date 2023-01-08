@@ -3,7 +3,7 @@ export default function Listeners() {
 }
 
 Listeners.prototype.add = function (element, event, fn) {
-  this.entries.push({ element: element, event: event, fn: fn });
+  this.entries.push({element, event, fn});
   element.addEventListener(event, fn);
 };
 

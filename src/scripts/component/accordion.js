@@ -1,4 +1,4 @@
-import Listeners from './listeners.js';
+import Listeners from './listeners';
 
 const SELECTORS = {
   ACCORDION: '[data-accordion]',
@@ -68,6 +68,10 @@ class Collapse {
     this.button.setAttribute('aria-expanded', true);
   }
 
+  destroy() {
+    this._listeners.removeAll();
+  }
+
   _animateContent(reverse, endState) {
     const config = ANIMATION_CONFIG;
     config.direction = reverse ? 'reverse' : 'normal';
@@ -89,10 +93,6 @@ class Collapse {
       this.animation = null;
       this.state = endState;
     });
-  }
-
-  destroy() {
-    this._listeners.removeAll();
   }
 }
 

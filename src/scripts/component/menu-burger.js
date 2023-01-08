@@ -1,4 +1,4 @@
-import Listeners from './listeners.js';
+import Listeners from './listeners';
 
 const SELECTORS_MENU_BURGER = {
   BUTTON: '[data-menu-burger-button]',
@@ -40,7 +40,7 @@ export default class MenuBurger {
     this.menuBurgerContent.classList.toggle('active');
     this.button.firstElementChild.classList.toggle('active');
 
-    let menuClassName = this.menuBurgerContent.className;
+    const menuClassName = this.menuBurgerContent.className;
 
     if (menuClassName.match(/active/)) {
       this.menuBurgerContent.removeAttribute('inert', '');
@@ -98,11 +98,9 @@ export default class MenuBurger {
         this.lastFocusableEl.focus();
         event.preventDefault();
       }
-    } else {
-      if (document.activeElement === this.lastFocusableEl) {
-        this.firstFocusableEl.focus();
-        event.preventDefault();
-      }
+    } else if (document.activeElement === this.lastFocusableEl) {
+      this.firstFocusableEl.focus();
+      event.preventDefault();
     }
   }
 

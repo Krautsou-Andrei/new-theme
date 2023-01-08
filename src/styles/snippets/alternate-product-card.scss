@@ -92,24 +92,24 @@
 .recommendation-product__tags {
   position: absolute;
 
+  z-index: 1;
+
   top: 0;
   left: 0;
 
   max-width: 100%;
-
-  z-index: 1;
 }
 
 .tags {
   padding: 0.5rem 0.75rem;
 
   display: flex;
+  flex-flow: wrap;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 
 .tags__item {
-  padding: 0.1875rem 0.3125rem 0.25rem 0.3125rem;
+  padding: 0.1875rem 0.3125rem 0.25rem;
 
   font-size: 0.8125rem;
   line-height: 1.2308;

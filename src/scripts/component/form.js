@@ -47,7 +47,7 @@ export default class Form {
     const array = Object.keys(variants);
 
     array.forEach((element) => {
-      if (element == variant.id) {
+      if (element === variant.id) {
         quantityVariant = element;
       }
     });
@@ -67,7 +67,7 @@ export default class Form {
 
   changeNameColor(variant) {
     const newNameColor = variant.name.split('/')[1];
-    let nameColor = this.container.querySelector(
+    const nameColor = this.container.querySelector(
       `#label-discription-${this.container.dataset.productId}`,
     );
 
@@ -98,7 +98,7 @@ export default class Form {
 
   onFormSubmit(event) {
     event.preventDefault();
-    fetch(event.target.action + '.js', {
+    fetch(`${event.target.action}.js`, {
       method: event.target.method,
       body: new FormData(event.target),
       headers: {
@@ -120,8 +120,8 @@ export default class Form {
           this.formElement.dispatchEvent(event);
         }
       })
-      .catch((e) => {
-        console.error(e);
+      .catch((error) => {
+        console.error(error);
       });
   }
 
