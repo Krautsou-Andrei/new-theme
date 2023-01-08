@@ -12,13 +12,10 @@ register('alternate-main-product', {
   form: null,
   productForm: null,
   formElement: null,
-  quantity: null,
 
   onLoad() {
     this.accordeon = new Accordion(this.container);
     this.form = new Form(this.container);
-    this.quantity = new Quantity(this.container);
-
     this.formElement = this.form.formElement;
     const productHandle = this.form.productHandle;
 
@@ -41,6 +38,9 @@ register('alternate-main-product', {
     }
     if (this.accordeon) {
       this.accordeon.destroy();
+    }
+    if (this.form) {
+      this.form.destroy();
     }
   },
 

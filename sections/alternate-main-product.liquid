@@ -62,17 +62,30 @@
           </legend>
           <div class='quantity'>
             <div class='quantity__controls' data-quantity>
+              {% liquid
+                if product.selected_or_first_available_variant.inventory_policy == 'continue'
+                  assign variant_quantity_max = 'Infinity'
+                elsif product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity < 0
+                  assign variant_quantity_max = 'Infinity'
+                elsif product.selected_or_first_available_variant.inventory_quantity < 0
+                  assign variant_quantity_max = '0'
+                else
+                  assign variant_quantity_max = product.selected_or_first_available_variant.inventory_quantity
+                endif
+              %}
+
               <input
                 class='quantity__input'
                 id='quantity'
                 type='number'
                 min='1'
-                max='999'
+                max='{{- variant_quantity_max -}}'
                 value='1'
                 name='quantity'
                 aria-live='polite'
                 data-input
               >
+
               <button class='quantity__button quantity__button--decrease' type='button' data-decrease>
                 <span class='visually-hidden'>
                   {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}

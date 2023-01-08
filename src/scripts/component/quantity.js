@@ -24,6 +24,7 @@ class CreateQuantity {
     this.max = options.max || OPTIONS.max;
     this.eventTarget = new EventTarget();
     this._listeners = new Listeners();
+    this.initialValue = this.initialVAlue(this.value);
   }
 
   clamp(number, min, max) {
@@ -37,6 +38,14 @@ class CreateQuantity {
   calcStep(value, step, min, max) {
     const isValueInRange = this.isInRange(value, min, max);
     return this.clamp(isValueInRange ? value + step : value, min, max);
+  }
+
+  initialVAlue(value) {
+    if (value < 0) {
+      this.setValue(0);
+    } else {
+      this.setValue(OPTIONS.initialValue);
+    }
   }
 
   dispatchEvent(type, detail) {
@@ -60,6 +69,15 @@ class CreateQuantity {
     this.dispatchEvent('change', {value: this.value});
   }
 
+  setMin(min) {
+    this.min = min;
+  }
+
+  setMax(max) {
+    this.max = max;
+    this.initialVAlue(this.value);
+  }
+
   increase() {
     this.setValue(this.calcStep(this.value, this.step, this.min, this.max));
   }
@@ -73,13 +91,11 @@ export default class CreatQuanyityView {
   constructor(element, options) {
     this.options = options || OPTIONS;
     this.quantity = new CreateQuantity(this.options);
-
+    this.changeInput = new CustomEvent('change', {bubbles: true});
     this._listeners = new Listeners();
     this.input = element.querySelector(SELECTORS_QUANTITY.INPUT);
-
     this.decrease = element.querySelector(SELECTORS_QUANTITY.DECREASE);
     this.increase = element.querySelector(SELECTORS_QUANTITY.INCREASE);
-    this.changeInput = new CustomEvent('change', {bubbles: true});
 
     this.render();
 
@@ -90,13 +106,14 @@ export default class CreatQuanyityView {
   }
 
   render() {
-    const value = this.quantity.getValue();
-    this.input.step = this.options.step || OPTIONS.step;
-    this.input.min = this.options.min || OPTIONS.min;
-    this.input.max = this.options.max || OPTIONS.max;
+    let value = this.quantity.getValue();
+
+    this.input.step = this.quantity.step;
+    this.input.min = this.quantity.min;
+    this.input.max = this.quantity.max;
     this.input.value = value;
-    this.decrease.disabled = value <= (this.options.min || OPTIONS.min);
-    this.increase.disabled = value >= (this.options.max || OPTIONS.max);
+    this.decrease.disabled = value <= this.quantity.min;
+    this.increase.disabled = value >= this.quantity.max;
   }
 
   onDecrease() {
@@ -111,6 +128,15 @@ export default class CreatQuanyityView {
 
   onInput(event) {
     this.quantity.setValue(event.target.value);
+  }
+
+  setMin(min) {
+    this.quantity.setMin(min);
+  }
+
+  setMax(max) {
+    this.quantity.setMax(max);
+    this.input.dispatchEvent(this.changeInput);
   }
 
   destroy() {

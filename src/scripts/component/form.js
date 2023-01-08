@@ -1,5 +1,6 @@
 import {getUrlWithVariant} from '@shopify/theme-product-form';
 import {formatMoney} from '@shopify/theme-currency';
+import Quantity from './quantity';
 
 const SELECTORS_FORM = {
   ADD_BUTTON_TEXT: '#button-add > span',
@@ -16,6 +17,8 @@ export default class Form {
     this.container = node;
     this.productHandle = this.container.dataset.handle;
     this.formElement = this.container.querySelector(SELECTORS_FORM.FORM);
+    this.firstElementMax = this.container.querySelector('[data-input]').max;
+    this.quantity = new Quantity(this.container, {max: this.firstElementMax});
   }
 
   onOptionChange(event) {
@@ -29,38 +32,52 @@ export default class Form {
 
     this.onQuantityChange(event);
 
+    this.variantQuantity(variant);
+
     this.handleErrorMessage();
 
     const url = getUrlWithVariant(window.location.href, variant.id);
     window.history.replaceState({path: url}, '', url);
   }
 
-  onQuantityChange(event) {
-    this.handleErrorMessage();
-    const variant = event.dataset.variant;
-    const newQuantity = event.dataset.quantity;
-
-    this.changePrice(variant, newQuantity);
-
+  variantQuantity(variant) {
     const variants = window.variants_inventory;
     let quantityVariant;
     const array = Object.keys(variants);
 
     array.forEach((element) => {
-      if (element === variant.id) {
+      if (element == variant.id) {
         quantityVariant = element;
       }
     });
 
-    const input = document.querySelector('[data-input]');
-    input.setAttribute('max', `${variants[quantityVariant]}`);
+    this.initialVAlueMax(variant, variants[quantityVariant]);
+  }
+
+  initialVAlueMax(variant, value) {
+    if (variant.available && value < 0) {
+      this.quantity.setMax(Infinity);
+    } else if (value < 0) {
+      this.quantity.setMax(0);
+    } else {
+      this.quantity.setMax(value);
+    }
+  }
+
+  onQuantityChange(event) {
+    const variant = event.dataset.variant;
+    const newQuantity = event.dataset.quantity;
+
+    this.handleErrorMessage();
+
+    this.changePrice(variant, newQuantity);
   }
 
   changePrice(variant, newQuantity = 1) {
     let newPrice = variant.price * newQuantity;
+    const price = this.container.querySelector(SELECTORS_FORM.PRICE);
 
     newPrice = formatMoney(newPrice, this.container.dataset.moneyFormat);
-    const price = this.container.querySelector(SELECTORS_FORM.PRICE);
 
     price.textContent = newPrice;
   }
@@ -132,5 +149,9 @@ export default class Form {
     if (errorMessage) {
       this.errorMessage.textContent = errorMessage;
     }
+  }
+
+  destroy() {
+    this.quantity.destroy();
   }
 }
