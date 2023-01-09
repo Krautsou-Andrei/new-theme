@@ -400,7 +400,7 @@
       }
     },
     "alternate-product-recommendations": {
-      "name": "Alternate product recom",
+      "name": "Alternate product recommendations",
       "settings": {
         "heading_label": "You may also like",
         "collection_label": "Collection",
