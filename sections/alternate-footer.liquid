@@ -58,7 +58,7 @@
 
 {%- schema -%}
 {
-  "name": "Alternate-footer",
+  "name": "t:sections.alternate-footer.name",
   "tag": "footer",
   "class": "footer",
   "max_blocks": 4,
@@ -66,49 +66,49 @@
   "blocks": [
     {
       "type": "about",
-      "name": "About",
+      "name": "t:sections.alternate-footer.blocks.name-about",
 
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Heading",
+          "label": "t:sections.alternate-footer.blocks.settings.title_label",
           "default": "Heading"
         },
         {
           "type": "richtext",
           "id": "about_paragraph",
-          "label": "Paragraph"
+          "label": "t:sections.alternate-footer.blocks.settings.about_paragraph_label"
         },
         {
           "type": "text",
           "id": "linkFB",
-          "label": "Link FB",
+          "label": "t:sections.alternate-footer.blocks.settings.linkFB_label",
           "default": "Link FB"
         },
         {
           "type": "text",
           "id": "link_instagram",
-          "label": "Link instagram",
+          "label": "t:sections.alternate-footer.blocks.settings.link_instagram_label",
           "default": "Link instagram"
         }
       ]
     },
     {
       "type": "menu",
-      "name": "Menu",
+      "name": "t:sections.alternate-footer.blocks.name-menu",
 
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Heading",
+          "label": "t:sections.alternate-footer.blocks.settings.title_label",
           "default": "Heading"
         },
         {
           "type": "link_list",
           "id": "footer_menu",
-          "label": "Menu"
+          "label": "t:sections.alternate-footer.blocks.settings.footer_menu_label"
         }
       ]
     }

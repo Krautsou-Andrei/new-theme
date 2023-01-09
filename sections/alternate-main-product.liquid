@@ -105,7 +105,7 @@
             id='button-add'
             type='submit'
             name='type'
-            value='add'
+            value='{{- 'products.product.add_to_cart' | t-}}'
             aria-live='polite'
             {%- unless product.selected_or_first_available_variant.available -%}
               disabled
@@ -124,7 +124,7 @@
             id='button-buy'
             type='submit'
             name='type'
-            value='buy'
+            value='{{- 'products.product.buy_it_now' | t-}}'
             {%- unless product.selected_or_first_available_variant.available -%}
               disabled
             {%- endunless -%}
@@ -196,7 +196,7 @@
 
 {%- schema -%}
 {
-  "name": "Alternate main product",
+  "name": "t:sections.alternate-product.name",
   "tag": "section",
   "limit": 1,
   "templates": ["product"],
@@ -204,31 +204,31 @@
     {
       "type": "checkbox",
       "id": "always_open_one",
-      "label": "Always Open One",
+      "label": "t:sections.alternate-product.settings.always_open_one_label",
       "default": false
     }
   ],
   "blocks": [
     {
-      "type": "accordeon",
-      "name": "Accordeon",
+      "type": "accordion",
+      "name": "t:sections.alternate-product.blocks.name-accordion",
 
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Heading",
+          "label": "t:sections.alternate-product.blocks.settings.title_label",
           "default": "Heading"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Paragraph"
+          "label": "t:sections.alternate-product.blocks.settings.text_label"
         },
         {
           "type": "checkbox",
           "id": "show_in_load_section",
-          "label": "Show in load section",
+          "label": "t:sections.alternate-product.blocks.settings.show_in_load_section_label",
           "default": false
         }
       ]
@@ -236,7 +236,7 @@
   ],
   "presets": [
     {
-      "name": "Alternate main product"
+      "name": "t:sections.alternate-product.presets.name"
     }
   ]
 }
