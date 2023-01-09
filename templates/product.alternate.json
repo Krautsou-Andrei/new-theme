@@ -9,7 +9,7 @@
           "settings": {
             "title": "Sizing & Fit",
             "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
-            "show_in_load_section": false
+            "show_in_load_section": true
           }
         },
         "febb9a6f-4844-4267-aaeb-a1cc5cc67109": {
