@@ -157,7 +157,7 @@
           <span
             class='cart-preview__quantity'
             aria-live='polite'
-          >
+            >np
             <span class='visually-hidden'>
               {{- 'templates.cart.cart' | t }}
               {{- 'accessibility.quantity_of_items_in_the_cart' | t -}}
@@ -174,14 +174,14 @@
 
 {%- schema -%}
 {
-  "name": "Altemate-header",
+  "name": "t:sections.alternate-header.name",
   "tag": "header",
   "class": "header",
   "settings": [
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Logo"
+      "label": "t:sections.alternate-header.logo_label"
     },
     {
       "type": "range",
@@ -196,7 +196,7 @@
     {
       "type": "link_list",
       "id": "header_menu",
-      "label": "Menu"
+      "label": "t:sections.alternate-header.header_menu_label"
     }
   ]
 }

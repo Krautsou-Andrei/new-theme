@@ -20,20 +20,20 @@
 
 {%- schema -%}
 {
-  "name": "Alternate product recom",
+  "name": "t:sections.alternate-product-recommendations.name",
   "tag": "section",
 
   "settings": [
     {
       "type": "text",
       "id": "heading",
-      "label": "You may also like",
+      "label": "t:sections.alternate-product-recommendations.settings.heading_label",
       "default": "You may also like"
     },
     {
       "type": "collection",
       "id": "collection",
-      "label": "Collection"
+      "label": "t:sections.alternate-product-recommendations.settings.collection_label"
     },
     {
       "type": "range",
@@ -41,14 +41,14 @@
       "min": 4,
       "max": 6,
       "step": 1,
-      "label": "Products to show",
+      "label": "t:sections.alternate-product-recommendations.settings.products_to_show_label",
       "default": 4
     }
   ],
 
   "presets": [
     {
-      "name": "Alternate product recomendations"
+      "name": "t:sections.alternate-product-recommendations.presets.name"
     }
   ]
 }
