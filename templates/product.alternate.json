@@ -24,7 +24,7 @@
           "type": "accordion",
           "settings": {
             "title": "Heading",
-            "text": "",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
             "show_in_load_section": false
           }
         }
