@@ -7,15 +7,15 @@
         "0a3fa3de-507c-4b24-b9f9-2d56307985f9": {
           "type": "accordion",
           "settings": {
-            "title": "Heading",
-            "text": "",
+            "title": "Sizing & Fit",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
             "show_in_load_section": false
           }
         },
         "febb9a6f-4844-4267-aaeb-a1cc5cc67109": {
           "type": "accordion",
           "settings": {
-            "title": "Heading",
+            "title": "Composition & Care",
             "text": "<p>Olga is 175cm, she is wearing a size S.<\/p><p>Olga is 175cm, she is wearing a size S.<\/p>",
             "show_in_load_section": false
           }
