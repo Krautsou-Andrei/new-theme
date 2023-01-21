@@ -1,32 +1,32 @@
-<div class='footer__container container'>
+<div class="footer__container container">
   {%- if section.blocks.size > 0 -%}
-    <div class='footer-top'>
+    <div class="footer-top">
       {%- for block in section.blocks -%}
-        <section class='footer__section'>
+        <section class="footer__section">
           {%- if block.settings.title != blank -%}
-            <h2 class='footer__heading footer-heading heading--lg'>{{- block.settings.title | escape -}}</h2>
+            <h2 class="footer__heading footer-heading heading--lg">{{- block.settings.title | escape -}}</h2>
           {%- endif -%}
           {%- case block.type -%}
             {%- when 'about' -%}
-              <address class='address'>
+              <address class="address">
                 {%- if block.settings.about_paragraph != blank -%}
-                  <div class='address__title'>
+                  <div class="address__title">
                     {{- block.settings.about_paragraph -}}
                   </div>
                 {%- endif -%}
-                <ul class='address__social social social__list'>
+                <ul class="address__social social social__list">
                   {%- if block.settings.linkFB != blank -%}
-                    <li class='social__item'>
-                      <a class='cocial__link link' href='{{- block.settings.linkFB -}}'>
-                        <span class='visually-hidden'>{{- 'general.social.links.facebook' | t -}}</span>
+                    <li class="social__item">
+                      <a class="cocial__link link" href="{{- block.settings.linkFB -}}">
+                        <span class="visually-hidden">{{- 'general.social.links.facebook' | t -}}</span>
                         {%- render 'alternate-icon-facebook' -%}
                       </a>
                     </li>
                   {%- endif -%}
                   {%- if block.settings.link_instagram != blank -%}
-                    <li class='social__item'>
-                      <a class='cocial__link link' href='{{- block.settings.link_instagram -}}'>
-                        <span class='visually-hidden'>{{- 'general.social.links.instagram' | t -}}</span>
+                    <li class="social__item">
+                      <a class="cocial__link link" href="{{- block.settings.link_instagram -}}">
+                        <span class="visually-hidden">{{- 'general.social.links.instagram' | t -}}</span>
                         {%- render 'alternate-icon-instagram' -%}
                       </a>
                     </li>
@@ -34,12 +34,12 @@
                 </ul>
               </address>
             {%- when 'menu' -%}
-              <section class='footer__section'>
+              <section class="footer__section">
                 {%- if block.settings.footer_menu != blank -%}
-                  <ul class='footer-navigation' role='list'>
+                  <ul class="footer-navigation" role="list">
                     {%- for link in block.settings.footer_menu.links -%}
-                      <li class='footer-navigation__item'>
-                        <a class='footer-navigation__link link' href='{{- link.url -}}'>{{- link.title | escape -}}</a>
+                      <li class="footer-navigation__item">
+                        <a class="footer-navigation__link link" href="{{- link.url -}}">{{- link.title | escape -}}</a>
                       </li>
                     {%- endfor -%}
                   </ul>
@@ -51,7 +51,7 @@
     </div>
   {%- endif -%}
 
-  <div class='footer-bottom'>
+  <div class="footer-bottom">
     {%- render 'alternate-footer-copyright' -%}
   </div>
 </div>
