@@ -4,7 +4,7 @@
     "alternate-main-product": {
       "type": "alternate-main-product",
       "blocks": {
-        "0986c4c5-79de-44c2-ad8a-ef24e182791d": {
+        "0a3fa3de-507c-4b24-b9f9-2d56307985f9": {
           "type": "accordion",
           "settings": {
             "title": "Sizing & Fit",
@@ -12,15 +12,16 @@
             "show_in_load_section": true
           }
         },
-        "c54544e0-3f62-4e8f-ad24-32bb6e8064c9": {
+        "febb9a6f-4844-4267-aaeb-a1cc5cc67109": {
           "type": "accordion",
           "settings": {
             "title": "Composition & Care",
-            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p><p>Olga is 175cm, she is wearing a size S.<\/p>",
             "show_in_load_section": false
           }
         },
-        "5415be81-42d1-4041-af70-a151e41990d2": {
+
+        "7a019417-d60a-4e28-9b5a-a5574f5bd8d8": {
           "type": "accordion",
           "settings": {
             "title": "Delivery & Returns",
@@ -30,9 +31,11 @@
         }
       },
       "block_order": [
-        "0986c4c5-79de-44c2-ad8a-ef24e182791d",
-        "c54544e0-3f62-4e8f-ad24-32bb6e8064c9",
-        "5415be81-42d1-4041-af70-a151e41990d2"
+
+        "0a3fa3de-507c-4b24-b9f9-2d56307985f9",
+        "febb9a6f-4844-4267-aaeb-a1cc5cc67109",
+        "7a019417-d60a-4e28-9b5a-a5574f5bd8d8"
+
       ],
       "settings": {
         "always_open_one": true
