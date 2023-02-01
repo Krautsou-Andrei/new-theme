@@ -70,17 +70,17 @@ export default class Form {
 
     this.handleErrorMessage();
 
-    this.changePrice(variant, newQuantity);
+    // this.changePrice(variant, newQuantity);
   }
 
-  changePrice(variant, newQuantity = 1) {
-    let newPrice = variant.price * newQuantity;
-    const price = this.container.querySelector(SELECTORS_FORM.PRICE);
+  // changePrice(variant, newQuantity = 1) {
+  //   let newPrice = variant.price * newQuantity;
+  //   const price = this.container.querySelector(SELECTORS_FORM.PRICE);
 
-    newPrice = formatMoney(newPrice, this.container.dataset.moneyFormat);
+  //   newPrice = formatMoney(newPrice, this.container.dataset.moneyFormat);
 
-    price.textContent = newPrice;
-  }
+  //   price.textContent = newPrice;
+  // }
 
   changeNameColor(variant) {
     const newNameColor = variant.name.split('/')[1];
