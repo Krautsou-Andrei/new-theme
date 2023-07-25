@@ -1,0 +1,243 @@
+<div
+  class='product product__container container'
+  data-section-id='{{- section.id  -}}'
+  data-section-type='alternate-main-product'
+  data-handle='{{- product.handle | escape -}}'
+  data-product-id='{{- product.id -}}'
+  data-money-format='
+    {{-shop.money_with_currency_format
+    -}}
+  '
+>
+  <a class='skip-to ' href='#product-info'>{{- 'accessibility.skip_to_product_info' | t -}}</a>
+  <div class='product__image image'>
+    <div class='image__container'>
+      {{ product.featured_image | image_url: width: 473 | image_tag: class: 'image__product', width: null }}
+    </div>
+  </div>
+  <script>
+    window.variants_inventory = {};
+    {%- for variant in product.variants -%}
+    window.variants_inventory[{{- variant.id -}}] = {{ variant.inventory_quantity | json }};
+    {%- endfor -%}
+  </script>
+  <div class='product__info product-info' id='product-info' tabindex='-1'>
+    <div class='product-info__container'>
+      <header class='product__header'>
+        <h1 class='product__heading heading--xxl'>{{- product.title | escape -}}</h1>
+        <span class='product__price price'>
+          <span class='price__value' id='price-value' aria-live='polite'>
+            {{- product.selected_or_first_available_variant.price | money_with_currency -}}
+          </span>
+        </span>
+        {%- if shop.taxes_included -%}
+          <p class='price__description price-description'>{{- 'products.product.include_taxes' | t -}}</p>
+        {%- endif -%}
+      </header>
+      <h2 class='visually-hidden'>{{- 'products.product.choose_options' | t -}}</h2>
+      {% form 'product', product, id: 'product-form', class: 'product__form form' %}
+        <input type='hidden' name='sections' value='alternate-header'>
+        <input type='hidden' name='sections_url' value='{{ routes.root_url }}'>
+        {%- if product.options_with_values.size > 0 -%}
+          {%- for product_option in product.options_with_values -%}
+            {%- case product_option.name | escape -%}
+              {%- when 'Size' -%}
+                {%- render 'alternate-radio-button-text',
+                  product_option: product_option,
+                  forloop: forloop,
+                  id-text: product.id
+                -%}
+              {%- when 'Color' -%}
+                {%- render 'alternate-radio-button-color',
+                  product_option: product_option,
+                  forloop: forloop,
+                  id-text: product.id
+                -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <fieldset class='form__fieldset'>
+          <legend class='quantity__legend'>
+            <label for='quantity'>{{- 'products.product.quantity.label' | t -}}</label>
+          </legend>
+          <div class='quantity'>
+            <div class='quantity__controls' data-quantity>
+              {% liquid
+                if product.selected_or_first_available_variant.inventory_policy == 'continue'
+                  assign variant_quantity_max = 'Infinity'
+                elsif product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity < 0
+                  assign variant_quantity_max = 'Infinity'
+                elsif product.selected_or_first_available_variant.inventory_quantity < 0
+                  assign variant_quantity_max = '0'
+                else
+                  assign variant_quantity_max = product.selected_or_first_available_variant.inventory_quantity
+                endif
+              %}
+
+              <input
+                class='quantity__input'
+                id='quantity'
+                type='number'
+                min='1'
+                max='{{- variant_quantity_max -}}'
+                value='1'
+                name='quantity'
+                aria-live='polite'
+                data-input
+              >
+
+              <button class='quantity__button quantity__button--decrease' type='button' data-decrease>
+                <span class='visually-hidden'>
+                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                </span>
+              </button>
+              <button class='quantity__button quantity__button--increase' type='button' data-increase>
+                <span class='visually-hidden'>
+                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                </span>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+        <div class='form__button'>
+          <button
+            class='button button--primary'
+            id='button-add'
+            type='submit'
+            name='type'
+            value='{{- 'products.product.add_to_cart' | t-}}'
+            aria-live='polite'
+            {%- unless product.selected_or_first_available_variant.available -%}
+              disabled
+            {%- endunless -%}
+          >
+            <span>
+              {%- if product.selected_or_first_available_variant.available -%}
+                {{- 'products.product.add_to_cart' | t -}}
+              {%- else -%}
+                {{- 'products.product.sold_out' | t -}}
+              {%- endif -%}
+            </span>
+          </button>
+          <button
+            class='button button--secondary'
+            id='button-buy'
+            type='submit'
+            name='type'
+            value='{{- 'products.product.buy_it_now' | t-}}'
+            {%- unless product.selected_or_first_available_variant.available -%}
+              disabled
+            {%- endunless -%}
+          >
+            <span>{{- 'products.product.buy_it_now' | t -}}</span>
+          </button>
+          <div class='form-out-stock' hidden role='alert'></div>
+          {% comment %} {{ form | payment_button }} {% endcomment %}
+        </div>
+      {% endform %}
+      <footer class='product__footer'>
+        {%- if product.description != blank -%}
+          {{- product.description -}}
+        {%- endif -%}
+      </footer>
+    </div>
+  </div>
+
+  <div class='product__description description'>
+    <h2 class='visually-hidden'>{{- 'products.product.description' | t -}}</h2>
+    <div
+      class='description__accordion accordion'
+      data-accordion
+      data-always-open-one='{{- section.settings.always_open_one -}}'
+    >
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div
+            class='accordion__section accordion-section'
+            id='{{-block.id-}}'
+            {{- block.shopify_attributes -}}
+            data-accordion-section
+          >
+            <h3 class='accordion-section__heading heading--xl'>
+              <button
+                class='accordion-section__button'
+                id='accordion{{- forloop.index -}}id'
+                type='button'
+                aria-expanded='true'
+                aria-controls='sect{{- forloop.index -}}'
+                data-accordion-button
+                data-show-in-load-section='{{- block.settings.show_in_load_section -}}'
+              >
+                <span class='accordion-section__title'>
+                  {{- block.settings.title -}}
+                  <span class='accordion-section__icon'></span
+                ></span>
+              </button>
+            </h3>
+            {%- if block.settings.text != blank -%}
+              <div
+                class='accordion-section__content'
+                id='sect{{- forloop.index -}}'
+                role='region'
+                aria-labelledby='accordion{{- forloop.index -}}id'
+                data-accordion-content
+              >
+                <div class='accordion-content-wrap'>
+                  {{- block.settings.text -}}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- schema -%}
+{
+  "name": "t:sections.alternate-product.name",
+  "tag": "section",
+  "limit": 1,
+  "templates": ["product"],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "always_open_one",
+      "label": "t:sections.alternate-product.settings.always_open_one_label",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "t:sections.alternate-product.blocks.name-accordion",
+
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.alternate-product.blocks.settings.title_label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.alternate-product.blocks.settings.text_label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_in_load_section",
+          "label": "t:sections.alternate-product.blocks.settings.show_in_load_section_label",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.alternate-product.presets.name"
+    }
+  ]
+}
+{%- endschema -%}

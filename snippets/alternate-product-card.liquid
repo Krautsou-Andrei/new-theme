@@ -1,0 +1,39 @@
+<article class='recommendation__product recommendation-product'>
+  <div class='recommendation-product__image image'>
+    <img
+      class='image__recommendation-product'
+      src='{{- product.featured_image | image_url: width: 248 -}}'
+      alt='{{- product.featured_image.alt | escape -}}'
+    >
+  </div>
+  {%- unless product.available -%}
+    <ul
+      class='recommendation-product__tags tags'
+      role='list'
+      aria-labelledby='ally_tags_label product-recommendation_heading_{{- forloop.index -}}'
+    >
+      <li class='tags__item tags__item--sold-out'>{{- 'products.product.sold_out' | t -}}</li>
+    </ul>
+  {%- endunless -%}
+  <h3 class='recommendation-product__heading heading--xl'>
+    <a class='recommendation-product__link link' href='{{- product.url -}}'>{{- product.title | escape -}}</a>
+  </h3>
+  {%- for product_option in product.options_with_values -%}
+    {%- case product_option.name | escape -%}
+      {%- when 'Color' -%}
+        {%- render 'alternate-radio-button-color',
+          product_option: product_option,
+          forloop: forloop,
+          id-text: product.id,
+          container_size: 'radio--small',
+          visually_hidden: 'visually-hidden'
+        -%}
+    {%- endcase -%}
+  {%- endfor -%}
+
+  <p class='recommendation-product__price heading--xl'>
+    <span class='price price--recommendation'>
+      {{- product.price | money_with_currency -}}
+    </span>
+  </p>
+</article>

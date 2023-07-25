@@ -1,0 +1,57 @@
+{
+  "layout": "theme.alternate",
+  "sections": {
+    "alternate-main-product": {
+      "type": "alternate-main-product",
+      "blocks": {
+        "0a3fa3de-507c-4b24-b9f9-2d56307985f9": {
+          "type": "accordion",
+          "settings": {
+            "title": "Sizing & Fit",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
+            "show_in_load_section": true
+          }
+        },
+        "febb9a6f-4844-4267-aaeb-a1cc5cc67109": {
+          "type": "accordion",
+          "settings": {
+            "title": "Composition & Care",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p><p>Olga is 175cm, she is wearing a size S.<\/p>",
+            "show_in_load_section": false
+          }
+        },
+
+        "7a019417-d60a-4e28-9b5a-a5574f5bd8d8": {
+          "type": "accordion",
+          "settings": {
+            "title": "Delivery & Returns",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>",
+            "show_in_load_section": false
+          }
+        }
+      },
+      "block_order": [
+
+        "0a3fa3de-507c-4b24-b9f9-2d56307985f9",
+        "febb9a6f-4844-4267-aaeb-a1cc5cc67109",
+        "7a019417-d60a-4e28-9b5a-a5574f5bd8d8"
+
+      ],
+      "settings": {
+        "always_open_one": true
+      }
+    },
+    "10901378-118d-4aba-b54c-3d85ebe6beda": {
+      "type": "alternate-product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "collection": "cotton",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "alternate-main-product",
+    "10901378-118d-4aba-b54c-3d85ebe6beda"
+  ]
+}
